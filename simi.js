@@ -2818,7 +2818,7 @@ numEmbro.addEventListener("change", () => {
 
 // 「戻る」時に、値をフォームに読込///////////////////////////////
 $(function () {
-	var f = 'form[action*="order-s.cgi"]'; //対象のフォームを特定
+	var f = 'form[action*="〇〇〇.cgi"]'; //対象のフォームを特定
 	var kubota = "simigloveorder"; //sessionStorage内の名前
 
 		window.addEventListener("pageshow", function () {
