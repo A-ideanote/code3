@@ -1,3 +1,5 @@
+
+
 //画面　上部固定部分の【高さ取得】//////////////////////////
 $(function() {
 	var headHeight=$("#header").height();
@@ -13,8 +15,8 @@ $(function() {
 
 //画面　上下のバランス【高さ取得】//////////////////////////
 const vh = window.innerHeight;
-
 document.getElementById('contents').style.height = vh +'px'; 
+
 const upper = document.getElementById('upper');
 const mozi = document.getElementById('mozi');
 const lower = document.getElementById('lower');
@@ -33,15 +35,17 @@ $(function () {
 	  });
   });
 
-// 宣言//////////////////////////////////////////////
+//定義//////////////////////////////////////////////
 // 2
-const select = document.querySelector('[name="基本モデル*1"]');
+const baseSelect = document.querySelector('[name="基本モデル*1"]');
 //【画像】基本型画像の定義
 const r_InImg = document.getElementById("r_InImg");
 const r_OutImg = document.getElementById("r_OutImg");
 const firstImg = document.getElementById("f_Img");
 
 // 3
+//WEB表示非表示
+const webDisplay = document.getElementById("web_none");
 //WEB全体を定義(▲選択項目用) 
 const webselect = document.getElementsByClassName('webradio');
 // WEBの種類定義 
@@ -56,6 +60,8 @@ const webOp = document.querySelector('[name="ウェブレースカラー・オ�
 const webHimo = document.getElementsByClassName("himo-special");
 
 // 4
+//バックスタイル表示非表示
+const backDisplay = document.getElementById("back_none");
 //バックスタイルを定義 
 const backselect = document.getElementsByName('バックスタイル*5');
 
@@ -91,12 +97,6 @@ const kawa1012 = document.getElementById("LC2List1012");
 const kawa1013 = document.getElementById("LC2List1013");
 const kawa1015 = document.getElementById("LC2List1015");
 const kawa1016 = document.getElementById("LC2List1016");
-
-const dis33 = document.getElementById('color33');
-
-// 本体カラー選択項目用
-const colorButton = document.getElementsByName('本体カラー*3');
-
 //【画像】カラーの画像の関数の定義
 //レギュラーバック
 const imgR = document.getElementsByClassName("bodyColor");
@@ -131,11 +131,11 @@ const imgFoyayubi = document.getElementById("oyayubi_f");  //15
 const imgFkoyubi_f = document.getElementById("koyubi_f");  //16
 
 // 6
-let himoColor = document.querySelector('[name="皮ひもカラー*1"]');
-let hamiColor = document.querySelector('[name="ハミダシカラー*1"]');
-let heriColor = document.querySelector('[name="ヘリ皮カラー*1"]');
-let stitchColor = document.querySelector('[name="ステッチカラー*1"]');
-let urakawaColor = document.querySelector('[name="裏革素材・カラー*1"]');
+const himoColor = document.querySelector('[name="皮ひもカラー*1"]');
+const hamiColor = document.querySelector('[name="ハミダシカラー*1"]');
+const heriColor = document.querySelector('[name="ヘリ皮カラー*1"]');
+const stitchColor = document.querySelector('[name="ステッチカラー*1"]');
+const urakawaColor = document.querySelector('[name="裏革素材・カラー*1"]');
 
 // 7
 //ラベルを定義
@@ -160,7 +160,6 @@ const Llabel_FM1 = document.getElementById("L_label_FM1");
 const Mlabel_FM1 = document.getElementById("M_label_FM1");
 const ABClabel_FM1 = document.getElementById("ABC_label_FM1");
 
-
 // 8
 // 指当てのデータを定義	
 const selectCover = document.getElementById('指カバーAカラー');
@@ -173,6 +172,8 @@ const fingerImgB = document.getElementById("fingerImgB");
 const fingerImgO = document.getElementById("fingerImgO");
 
 // 9
+//芯とじ表示非表示
+const coreDisplay = document.getElementById("core_none");
 //芯とじデータを定義
 const stList = document.getElementsByName('芯トジ形態*6');
 //【画像】芯トジの画像を定義
@@ -205,7 +206,6 @@ const littleF_text = document.querySelector('[name="小指部・刺繍文字*1"]
 
 //10-2 丸抜き刺繍
 const maru_EmbContents = document.getElementById("maru_EmbContents")
-
 const maruEmbro_part = document.querySelector('[name="丸抜き刺繍位置"]');
 const maruEmbro = document.querySelector('[name="丸抜き刺繍仕様*11"]');
 const maruEmbro_base = document.querySelector('[name="丸抜き刺繍台カラー*1"]');
@@ -215,16 +215,13 @@ const maruEmbro_text = document.querySelector('[name="丸抜き刺繍文字*1"]'
 
 //10-3 WEB刺繍
 const web_EmbContents = document.getElementById("web_EmbContents")
-
 const webEmbro = document.querySelector('[name="WEB刺繍・刺繍書体*12"]');
 const webEmbro_color = document.querySelector('[name="WEB刺繍・刺繍カラー*1"]');
 const webEmbro_huti = document.querySelector('[name="WEB刺繍・刺繍カゲ・フチカラー*1"]');
 const webEmbro_text = document.querySelector('[name="WEB刺繍・刺繍文字*1"]');
 
-
 //10-4 番号刺繍
 const num_EmbContents = document.getElementById("num_EmbContents")
-
 const numEmbro = document.querySelector('[name="番号刺繍書体"]');
 const numEmbro_color = document.querySelector('[name="番号刺繍カラー*1"]');
 const numEmbro_text = document.querySelector('[name="番号刺繍数字*1"]');
@@ -241,7 +238,6 @@ const initWeb_Move = () => {
 	for(let index in webDisplay_out) {
 		webDisplay_out[index].disabled=true; 
 	}
-
 }
 //3【画像】ウェブ　初期値は1枚目 
 const initWeb_Img = () => {
@@ -261,8 +257,8 @@ const initBackStyle_Move = () =>{
 }
 //5【選択項目】 多色カラーボタンを「無効:選択不可」
 const initColor_Move = () => {
-	colorButton[16].disabled=true; 
-	colorButton[17].disabled=true;
+	kawaColor[16].disabled=true; 
+	kawaColor[17].disabled=true;
 }
 //5【項目表示】多色カラー「非表示」
 const initColor_display = () =>{
@@ -304,6 +300,26 @@ const initWebEmbro_move = () =>{
 const initNumEmbro_move = () =>{
 	numEmbro_color.disabled = true;
 	numEmbro_text.disabled = true;
+}
+
+
+//3 WEB投手用・選択可 (falseでウェブ選択可)
+const webForPicther = () =>{
+	for(let i = 0; i < webDisplay_p.length; i++) {
+		webDisplay_p[i].disabled = false; 
+		}
+}
+//3 WEB内野手・選択可
+const webForInfielder = () => {
+	for(let i = 0; i < webDisplay_in.length; i++) {
+		webDisplay_in[i].disabled = false;
+		}
+}
+//3 WEB外野手・選択可
+const webForOutfielder = () =>{
+	for(let i = 0; i < webDisplay_out.length; i++) {
+		webDisplay_out[i].disabled=false;
+		}
 }
 
 
@@ -471,7 +487,7 @@ const flabelIn1_Clear = () =>{
 
 
 ////1.読み込んだ時//////////////////////////////////////////////
-window.onload = () => {
+window.addEventListener("load", () => {
 	// 2
 	//【画像】初期値ファーストバックと外野の画像を非表示
 	r_InImg.style.display ="block";
@@ -479,7 +495,7 @@ window.onload = () => {
 	firstImg.style.display ="none";
 	// 3　
 	//初期値WEBは非表示
-	document.getElementById("web_none").style.display = "none";	
+	webDisplay.style.display = "none";	
 	//3【動き】ウェブ「無効:選択不可」
 	initWeb_Move();
 	//【画像】初期値webの画像を非表示
@@ -488,7 +504,7 @@ window.onload = () => {
 
 	// 4　
 	// 初期値バックスタイルは非表示
-	document.getElementById("back_none").style.display = "none";	
+	backDisplay.style.display = "none";	
 	//【動き】バックスタイル「無効:選択不可」
 	initBackStyle_Move();
 
@@ -516,7 +532,7 @@ window.onload = () => {
 	
 	// 9　
 	//初期値バックスタイルは非表示
-	document.getElementById("core_none").style.display = "none";	
+	coreDisplay.style.display = "none";	
 	//【動き】芯とじ：タテトジと辻トジを「無効:選択不可」
 	initCore_move();
 	//【画像】芯とじ：初期ヨコトジ	
@@ -549,14 +565,14 @@ window.onload = () => {
 	web_EmbContents.style.display = "none";	
 	//【動き】10-4WEB刺繍は非表示
 	num_EmbContents.style.display = "none";
-}
+});
  
 ////2.基本項目変更した時////////////////////////////////////////
-select.onchange = () => { 
+baseSelect.addEventListener("change", () => { 
 	//ここから初期化----------------------------------------	
 	// 3 ウェブ(基本に連動初期化)///////////////////////
 		//(選択したら表示させる)
-		document.getElementById("web_none").style.display = "block";
+		webDisplay.style.display = "block";
 		//(選択されていた選択肢を初期化）
 		for(let i = 0; i < webselect.length; i++) {
 			webselect[i].checked = false;
@@ -577,7 +593,7 @@ select.onchange = () => {
 
 	// 4バックスタイル(基本に連動初期化)/////////////////////
 		//(選択したら表示させる)
-		document.getElementById("back_none").style.display = "block";
+		backDisplay.style.display = "block";
 		//(選択されていた選択肢を初期化）
 		for(let i = 0; i < backselect.length; i++) {
 			backselect[i].checked = false;
@@ -626,7 +642,7 @@ select.onchange = () => {
 
 	// 9芯とじ(基本に連動初期化)///////////////////////////////////////
 		//(選択したら表示させる)
-		document.getElementById("core_none").style.display = "block";
+		coreDisplay.style.display = "block";
 		//★画像(選択されていた選択肢を初期化）
 		initCore_img();
 		//▲【動き】(選択されていた選択肢を初期化）
@@ -663,141 +679,125 @@ select.onchange = () => {
 
 
 	//ここから動き----------------------------------------
-		//バリューを全角で分割させる
-		let type = select.value.split('\u3000');
 
-		if(type[1].match(/ピッチャー・セカンド・ショート・サード用/)){
+		//基本モデルのバリューを全角で分割させる
+		let type = baseSelect.value.split('\u3000');
+		
+		if(type[1].match(/ピッチャー・セカンド・ショート・サード用/i)){
 			//基本型の画像
 			r_InImg.style.display = "block";
 			r_OutImg.style.display = "none";//外野
 			firstImg.style.display ="none";//ファースト
-
-			// 	falseでウェブ選択可
-			for(let i = 0; i < webDisplay_p.length; i++) {
-				webDisplay_p[i].disabled=false; 
-				}
-			for(let i = 0; i < webDisplay_in.length; i++) {
-				webDisplay_in[i].disabled=false;
-				}
+			//ウェブ投手選択可
+			webForPicther();
+			//ウェブ内野選択可
+			webForInfielder();
 			// バックスタイル選択可
 			backselect[0].disabled=false; 
 			//多色カラーボタン選択可
-			colorButton[16].disabled=false; 
+			kawaColor[16].disabled=false; 			
 			//トジ選択可
 			stList[0].disabled=false;
 			stList[2].disabled=false;
-
-			console.log("ピッチャー・セカンド・ショート・サード用");
-
-		}else if(type[1].match(/ピッチャー/)){
-			// 	falseでウェブ選択可
-			for(let i = 0; i < webDisplay_p.length; i++) {
-				webDisplay_p[i].disabled=false; 						
-				}
-				if( type[0] == "FM1型"){
-					//基本型の画像
-					r_InImg.style.display ="none";
-					r_OutImg.style.display ="none";//レギュラー外野
-					firstImg.style.display = "block";//ファースト
-					// 選択可
-					backselect[1].disabled=false; 
-					colorButton[17].disabled=false; 
-					stList[0].disabled=false;
-					console.log("ピッチャー用のファーストバッグです");
-
-				}else{
-					//基本型の画像
-					r_InImg.style.display = "block";
-					r_OutImg.style.display = "none";//レギュラー外野
-					firstImg.style.display ="none";//ファースト
-					/// 選択可
-					backselect[0].disabled=false; 
-					colorButton[16].disabled=false; 
-					stList[0].disabled=false;
-					console.log("ピッチャー用のレギュラーバッグです");
-				}
-		}else if(type[1].match(/内野/)|| type[1].match(/セカンド/)|| type[1].match(/ショート/)|| type[1].match(/サード/)){
-			// falseで選択可
-			for(let i = 0; i < webDisplay_in.length; i++) {
-				webDisplay_in[i].disabled=false; 
-				}
-			console.log("内野にマッチしました！");
-
-				if( type[0] == "FM5型"){
-					//基本型の画像
-					r_InImg.style.display = "none";
-					r_OutImg.style.display = "none";//レギュラー外野
-					firstImg.style.display = "block";//ファースト
-					// 選択可
-					backselect[1].disabled=false; //ファースト
-					colorButton[17].disabled=false; 
-					stList[2].disabled=false;						
-					console.log("内野手用のファーストバッグです");
-				}else{
-					//基本型の画像
-					r_InImg.style.display = "block";
-					r_OutImg.style.display = "none";//レギュラー外野
-					firstImg.style.display ="none";//ファースト
-					// 選択可
-					backselect[0].disabled=false; 
-					colorButton[16].disabled=false; 
-					stList[2].disabled=false;
-					console.log("内野手用のレギュラーバッグです");
-				}
-
-		}else if (type[1].match(/オール/)){
-			// blockでWEB表示
-			for(let i = 0; i < webDisplay_p.length; i++) {
-				webDisplay_p[i].disabled=false; 
-				}
-			for(let i = 0; i < webDisplay_in.length; i++) {
-				webDisplay_in[i].disabled=false;
-				}
+			//console.log("ピッチャー・セカンド・ショート・サード用");
+		}else if(type[1].match(/ピッチャー/) && type[0] == "FM1型" ){
+				//WEB投手・選択可
+				webForPicther();
+				//基本型の画像
+				r_InImg.style.display ="none";
+				r_OutImg.style.display ="none";//レギュラー外野
+				firstImg.style.display = "block";//ファースト
+				// 選択可
+				backselect[1].disabled=false; 
+				kawaColor[17].disabled=false; 
+				stList[0].disabled=false;
+				//console.log("ピッチャー用のファーストバッグFM1です");
+		}else if(type[1].match(/ピッチャー/) && !(type[0] == "FM1型") ){
+				//WEB投手・選択可
+				webForPicther();
+				//基本型の画像
+				r_InImg.style.display = "block";
+				r_OutImg.style.display = "none";//レギュラー外野
+				firstImg.style.display ="none";//ファースト
+				/// 選択可
+				backselect[0].disabled=false; 
+				kawaColor[16].disabled=false; 
+				stList[0].disabled=false;
+				//console.log("ピッチャー用のレギュラーバッグです");
+		}else if((type[1].match(/内野/)|| type[1].match(/セカンド/)|| type[1].match(/ショート/)|| type[1].match(/サード/)) && type[0] == "FM5型"){
+			//WEB内野手・選択可
+			webForInfielder();
+			//基本型の画像
+			r_InImg.style.display = "none";
+			r_OutImg.style.display = "none";//レギュラー外野
+			firstImg.style.display = "block";//ファースト
+			// 選択可
+			backselect[1].disabled=false; //ファースト
+			kawaColor[17].disabled=false; 
+			stList[2].disabled=false;						
+			//console.log("内野手用のファーストバッグFM5型です");
+		}else if((type[1].match(/内野/)|| type[1].match(/セカンド/)|| type[1].match(/ショート/)|| type[1].match(/サード/)) && !(type[0] == "FM5型") ){
+			//WEB内野手・選択可
+			webForInfielder();
 			//基本型の画像
 			r_InImg.style.display = "block";
 			r_OutImg.style.display = "none";//レギュラー外野
 			firstImg.style.display ="none";//ファースト
 			// 選択可
 			backselect[0].disabled=false; 
-			colorButton[16].disabled=false; 
+			kawaColor[16].disabled=false; 
+			stList[2].disabled=false;
+			//console.log("内野手用のレギュラーバッグです");			
+		}else if (type[1].match(/オール/)){
+			//WEB投手・選択可
+			webForPicther();
+			//WEB内野手・選択可
+			webForInfielder();
+			//基本型の画像
+			r_InImg.style.display = "block";
+			r_OutImg.style.display = "none";//レギュラー外野
+			firstImg.style.display ="none";//ファースト
+			// 選択可
+			backselect[0].disabled=false; 
+			kawaColor[16].disabled=false; 
 			stList[0].disabled=false;
-			console.log("オールラウンド用");
-		}else if (type[1].match(/外野手/)){
-			console.log("外野にマッチしました！");
-			for(let i = 0; i < webDisplay_out.length; i++) {
-				webDisplay_out[i].disabled=false;
-				}
-				if( type[0] ==  "FM7型"){
-					//基本型の画像
-					r_InImg.style.display = "none";
-					r_OutImg.style.display = "none";//レギュラー外野
-					firstImg.style.display = "block";//ファースト
-					// 選択可
-					backselect[1].disabled=false; //ファースト
-					colorButton[17].disabled=false; 
-					stList[0].disabled=false;
-					console.log("外野手用のファーストバッグです");
-				}else if( type[0] ==  "FM8型"){
-					//基本型の画像
-					r_InImg.style.display = "none";
-					r_OutImg.style.display = "none";//レギュラー外野
-					firstImg.style.display = "block";//ファースト
-					// 選択可
-					backselect[1].disabled=false; //ファースト
-					colorButton[17].disabled=false; 
-					stList[0].disabled=false;
-					console.log("外野手用のファーストバッグです");
-				}else {
-					//基本型の画像
-					r_InImg.style.display = "none";
-					r_OutImg.style.display = "block";//レギュラー外野
-					firstImg.style.display ="none";//ファースト
-					// 選択可
-					backselect[0].disabled=false; 
-					colorButton[16].disabled=false; 
-					stList[0].disabled=false;
-					console.log("外野手用のレギュラーバッグです");
-				}					
+			//console.log("オールラウンド用");
+		}else if (type[1].match(/外野手/) && type[0] == "FM7型"){
+			//WEB外野手・選択可
+			webForOutfielder();
+			//基本型の画像
+			r_InImg.style.display = "none";
+			r_OutImg.style.display = "none";//レギュラー外野
+			firstImg.style.display = "block";//ファースト
+			// 選択可
+			backselect[1].disabled=false; //ファースト
+			kawaColor[17].disabled=false; 
+			stList[0].disabled=false;
+			//console.log("外野手用のファーストバッグFM7です");
+		}else if (type[1].match(/外野手/) && type[0] == "FM8型"){
+			//WEB外野手・選択可
+			webForOutfielder();
+			//基本型の画像
+			r_InImg.style.display = "none";
+			r_OutImg.style.display = "none";//レギュラー外野
+			firstImg.style.display = "block";//ファースト
+			// 選択可
+			backselect[1].disabled=false; //ファースト
+			kawaColor[17].disabled=false; 
+			stList[0].disabled=false;
+			//console.log("外野手用のファーストバッグFM8です");
+		}else if (type[1].match(/外野手/) && !(type[0] ==  "FM7型") && !(type[0] ==  "FM8型")){
+			//WEB外野手・選択可
+			webForOutfielder();
+			//基本型の画像
+			r_InImg.style.display = "none";
+			r_OutImg.style.display = "block";//レギュラー外野
+			firstImg.style.display ="none";//ファースト
+			// 選択可
+			backselect[0].disabled=false; 
+			kawaColor[16].disabled=false; 
+			stList[0].disabled=false;
+			//console.log("外野手用のレギュラーバッグです");
 		}else {
 			console.log("マッチしなかったです…");
 		}
@@ -807,8 +807,9 @@ select.onchange = () => {
 		}else{
 			maru_EmbContents.style.display = "block";
 		}
+
 	//ここまで動き----------------------------------------
-} 
+});
 
 ////3.残りの動き////////////////////////////////////////////////
 
@@ -816,20 +817,20 @@ select.onchange = () => {
 const Webchange = () => {
 	WC = document.getElementsByName('ウェブスタイル*4');	
 	//W-23とW-26とW-23Sの時選択項目表示
-		if(WC[20].checked || WC[22].checked|| WC[56].checked){					
-			document.getElementById("web2").style.display = "block";
-			webOp.disabled = false;
-		} else{
-			document.getElementById("web2").style.display = "none";	
-			webOp.disabled = true; 
-			webOp.selectedIndex = 0;
-			for(let i = 0; i < webHimo.length; i++) {
-				webHimo[i].style.fill = "";
-			}				
-		}
+	if(WC[20].checked || WC[22].checked|| WC[56].checked){					
+		document.getElementById("web2").style.display = "block";
+		webOp.disabled = false;
+	} else{
+		document.getElementById("web2").style.display = "none";	
+		webOp.disabled = true; 
+		webOp.selectedIndex = 0;
+		for(let i = 0; i < webHimo.length; i++) {
+			webHimo[i].style.fill = "";
+		}				
+	}
 					
 	//表ウェブ
-	for (let webnum = 0; webnum < 59; webnum++)
+	for (let webnum = 0; webnum < webselect.length; webnum++)
 		for(let i = 0; i < webImg.length; i++){
 			if (WC[webnum].checked){
 				webImg[i].style.display ="none";
@@ -838,7 +839,7 @@ const Webchange = () => {
 		}
 
 	//裏ウェブ
-	for (let urawebnum = 0; urawebnum < 59; urawebnum++)
+	for (let urawebnum = 0; urawebnum < webselect.length; urawebnum++)
 		for(let i = 0; i < uraWebImg.length; i++){
 			if (WC[urawebnum].checked){
 				uraWebImg[i].style.display ="none";
@@ -854,7 +855,7 @@ const Webchange = () => {
 	}
 }
 // 3-1【カラー】「WEBオプション」カラー設定　【W-23、W-26、W-23Sのみ】　
-webOp.onchange = () => { 
+webOp.addEventListener("change", () => { 
 	for(let i = 0; i < webHimo.length; i++) {
 		webOp.value == "Fオレンジ" ? webHimo[i].style.fill = "#f13421":
 		webOp.value == "オレンジ" ? webHimo[i].style.fill = "#ff5722":
@@ -873,59 +874,69 @@ webOp.onchange = () => {
 		webOp.value == "グリーン" ? webHimo[i].style.fill = "#0e4a2e":
 		webHimo[i].style.fill = "#6c2735"; // "バーガンディ" 
 		}
-}
+});
 // 5【カラー】本体カラー
 const changeBoxColor = (newColor) => {
-	//レギュラーバック
-	for(let i = 0; i < imgR1.length; i++){
-		imgR1[i].style.fill = newColor;
+
+	//レギュラー1色
+	class rColor_one {
+		constructor(obj){
+			const colorPlace = document.getElementsByClassName(obj.CP);
+			for(let i = 0; i < colorPlace.length; i++){
+				colorPlace[i].style.fill = newColor;
+			}
+		}
 	}
-	for(let i = 0; i < imgR2.length; i++){
-		imgR2[i].style.fill = newColor;
-	}
-	for(let i = 0; i < imgR3.length; i++){
-		imgR3[i].style.fill = newColor;
-	}
-	for(let i = 0; i < imgR4.length; i++){
-		imgR4[i].style.fill = newColor;
-	}
-	for(let i = 0; i < imgR5.length; i++){
-		imgR5[i].style.fill = newColor;
-	}
-	for(let i = 0; i < imgR6.length; i++){
-		imgR6[i].style.fill = newColor;
-	}
-	for(let i = 0; i < imgR7.length; i++){
-		imgR7[i].style.fill = newColor;
-	}
-	for(let i = 0; i < imgR8.length; i++){
-		imgR8[i].style.fill = newColor;
-	}
-	for(let i = 0; i < imgR9.length; i++){
-		imgR9[i].style.fill = newColor;
-	}
-	for(let i = 0; i < imgR10.length; i++){
-		imgR10[i].style.fill = newColor;
-	}
-	for(let i = 0; i < imgR11.length; i++){
-		imgR11[i].style.fill = newColor;
-	}
-	for(let i = 0; i < imgR12.length; i++){
-		imgR12[i].style.fill = newColor;
-	}
-	for(let i = 0; i < imgR13.length; i++){
-		imgR13[i].style.fill = newColor;
-	}
-	for(let i = 0; i < imgRkoyubi.length; i++){
-		imgRkoyubi[i].style.fill = newColor;
-	}
-	for(let i = 0; i < imgRoya_down.length; i++){
-		imgRoya_down[i].style.fill = newColor;
-	}
-	for(let i = 0; i < imgRoya_up.length; i++){
-		imgRoya_up[i].style.fill = newColor;
-	};
-	//ファーストバック
+	const CC1 = new rColor_one ({
+		CP: 'bodyColor1'
+	});
+	const CC2 = new rColor_one ({
+		CP: 'bodyColor2'
+	});
+	const CC3 = new rColor_one ({
+		CP: 'bodyColor3'
+	});
+	const CC4 = new rColor_one ({
+		CP: 'bodyColor4'
+	});
+	const CC5 = new rColor_one ({
+		CP: 'bodyColor5'
+	});
+	const CC6 = new rColor_one ({
+		CP: 'bodyColor6'
+	});
+	const CC7 = new rColor_one ({
+		CP: 'bodyColor7'
+	});
+	const CC8 = new rColor_one ({
+		CP: 'bodyColor8'
+	});
+	const CC9 = new rColor_one ({
+		CP: 'bodyColor9'
+	});
+	const CC10 = new rColor_one ({
+		CP: 'bodyColor10'
+	});
+	const CC11 = new rColor_one ({
+		CP: 'bodyColor11'
+	});
+	const CC12 = new rColor_one ({
+		CP: 'bodyColor12'
+	});
+	const CC13 = new rColor_one ({
+		CP: 'bodyColor13'
+	});
+	const CC15_1 = new rColor_one ({
+		CP: 'oyayubi_up'
+	});
+	const CC15_2 = new rColor_one ({
+		CP: 'oyayubi_down'
+	});
+	const CC16 = new rColor_one ({
+		CP: 'koyubi'
+	});
+
+	//ファーストバック1色
 	imgF101.style.fill = newColor;
 	imgF102.style.fill = newColor;
 	imgF106.style.fill = newColor;
@@ -933,23 +944,32 @@ const changeBoxColor = (newColor) => {
 	imgF1010.style.fill = newColor;
 	imgF1011_left.style.fill = newColor; //ベルト
 	imgF1011_right.style.fill = newColor; //ベルト
+	//捕球面カラー
 	for(let i = 0; i < imgF1012.length; i++){
 		imgF1012[i].style.fill = "newColor";
-	} //捕球面カラー
+	}
+	//WEBカラー
 	for(let i = 0; i < imgF1013.length; i++){
 		imgF1013[i].style.fill = "newColor";
 	}
-	imgFkoyubi_f.style.fill = newColor;
+	//親指表
 	imgFoyayubi.style.fill  = newColor;
+	//親指裏
+	for(let i = 0; i < imgRoya_up.length; i++){
+		imgRoya_up[i].style.fill  = newColor;
+	}
+	for(let i = 0; i < imgRoya_down.length; i++){
+		imgRoya_down[i].style.fill  = newColor;
+	}
+	//小指
+	imgFkoyubi_f.style.fill = newColor;
 
-	// 多色本体カラー選択項目用
-	check = document.getElementsByName('本体カラー*3');
-	//レギュラーのため、valueの検索
-	baseModel = document.getElementById('js_base');
-	baseModel= baseModel.options[baseModel.selectedIndex].value;	
 
-	//[17]ファーストバック  [16]レギュラー
-	if (check[17].checked) {
+	//valueの検索
+	let baseModel= baseSelect.options[baseSelect.selectedIndex].value;	
+
+		//2色以上(ファーストバック)
+	if (kawaColor[17].checked) {
 		fColor.style.display = "block";
 		kawa101.disabled = false;
 		kawa102.disabled = false;
@@ -962,7 +982,7 @@ const changeBoxColor = (newColor) => {
 		// kawa1014.disabled = false;
 		kawa1015.disabled = false;
 		kawa1016.disabled = false;
-
+	
 		//レギュラーの枠は非表示
 		rColor.style.display = "none";
 		//レギュラーの選択項目は無効
@@ -971,80 +991,88 @@ const changeBoxColor = (newColor) => {
 		rColorImg_Clear();
 		//【画像】F画像の色　クリア
 		fColorImg_Clear();
+	
+	}
+	//2色以上(レギュラーバック（３が2と同じ））の場合
+	else if (kawaColor[16].checked && (baseModel.match(/KSN-MP24/i) || baseModel.match(/KSN-YH46/i)|| baseModel.match(/KSN-AR3/i)|| baseModel.match(/KSN-T1/i) || baseModel.match(/KSN-6PSL/i) || baseModel.match(/KSN-H46/i) || baseModel.match(/KSN-L7S3/i) || baseModel.match(/KSN-24MU/i))){
+			// color33が見える 「2と同じ」
+			rColor.style.display = "block";	
+			document.getElementById("color3").style.display = "none";
+			document.getElementById("color33").style.display = "block";
+			kawa1.disabled = false;
+			kawa2.disabled = false;
+			kawa3.disabled = true;
+			kawa33.disabled = false;
+			kawa4.disabled = false;
+			kawa5.disabled = false;
+			kawa6.disabled = false;
+			kawa7.disabled = false;
+			kawa8.disabled = false;
+			kawa9.disabled = false;
+			kawa10.disabled = false;
+			kawa11.disabled = false;
+			kawa12.disabled = false;
+			kawa13.disabled = false;
+			// kawa14.disabled = true;
+			kawa15.disabled = false;
+			kawa16.disabled = false;
 
-		}else if (check[16].checked){
-			if(baseModel.match(/KSN-MP24/i) || baseModel.match(/KSN-YH46/i)|| baseModel.match(/KSN-AR3/i)|| baseModel.match(/KSN-T1/i) || baseModel.match(/KSN-6PSL/i) || baseModel.match(/KSN-H46/i) || baseModel.match(/KSN-L7S3/i) || baseModel.match(/KSN-24MU/i)) {
-				// color33が見える 「2と同じ」
-				rColor.style.display = "block";
-				fColor.style.display = "none";
-				document.getElementById("color3").style.display = "none";
-				document.getElementById("color33").style.display = "block";
-
-				kawa1.disabled = false;
-				kawa2.disabled = false;
-				kawa3.disabled = true;
-				kawa33.disabled = false;
-				kawa4.disabled = false;
-				kawa5.disabled = false;
-				kawa6.disabled = false;
-				kawa7.disabled = false;
-				kawa8.disabled = false;
-				kawa9.disabled = false;
-				kawa10.disabled = false;
-				kawa11.disabled = false;
-				kawa12.disabled = false;
-				kawa13.disabled = false;
-				// kawa14.disabled = true;
-				kawa15.disabled = false;
-				kawa16.disabled = false;
-				//ファーストバックの選択項目は無効
-				fColorDisabled_True();
-				//【画像】R画像の色　クリア
-				rColorImg_Clear();
-				//【画像】F画像の色　クリア
-				fColorImg_Clear();
-			} else {
-					// color3が見える
-					rColor.style.display = "block";
-					fColor.style.display = "none";
-					document.getElementById("color3").style.display = "block";
-					document.getElementById("color33").style.display = "none";
-					kawa1.disabled = false;
-					kawa2.disabled = false;
-					kawa3.disabled = false;
-					kawa33.disabled = true;
-					kawa4.disabled = false;
-					kawa5.disabled = false;
-					kawa6.disabled = false;
-					kawa7.disabled = false;
-					kawa8.disabled = false;
-					kawa9.disabled = false;
-					kawa10.disabled = false;
-					kawa11.disabled = false;
-					kawa12.disabled = false;
-					kawa13.disabled = false;
-					// kawa14.disabled = true;
-					kawa15.disabled = false;
-					kawa16.disabled = false;
-					//ファーストバックの選択項目は無効
-					fColorDisabled_True();
-					//【画像】R画像の色　クリア
-					rColorImg_Clear();
-					//【画像】F画像の色　クリア
-					fColorImg_Clear();			
-			} 
-		}else {
-			rColor.style.display = "none";
+			//ファーストバックの中身非表示
 			fColor.style.display = "none";
 			//ファーストバックの選択項目は無効
 			fColorDisabled_True();
-			//レギュラーの選択項目は無効
-			rColorDisabled_True();
-			//R項目　「0」にする
-			rColorSelect_Clear();
-			//F項目　「0」にする
-			fColorSelect_Clear();
-		}
+			//【画像】R画像の色　クリア
+			rColorImg_Clear();
+			//【画像】F画像の色　クリア
+			fColorImg_Clear();
+	}
+	//2色以上(レギュラーバック（3が独立））の場合
+	else if (kawaColor[16].checked && !(baseModel.match(/KSN-MP24/i) || baseModel.match(/KSN-YH46/i)|| baseModel.match(/KSN-AR3/i)|| baseModel.match(/KSN-T1/i) || baseModel.match(/KSN-6PSL/i) || baseModel.match(/KSN-H46/i) || baseModel.match(/KSN-L7S3/i) || baseModel.match(/KSN-24MU/i))){
+			// color3が見える
+			rColor.style.display = "block";
+			document.getElementById("color3").style.display = "block";
+			document.getElementById("color33").style.display = "none";
+			kawa1.disabled = false;
+			kawa2.disabled = false;
+			kawa3.disabled = false;
+			kawa33.disabled = true;
+			kawa4.disabled = false;
+			kawa5.disabled = false;
+			kawa6.disabled = false;
+			kawa7.disabled = false;
+			kawa8.disabled = false;
+			kawa9.disabled = false;
+			kawa10.disabled = false;
+			kawa11.disabled = false;
+			kawa12.disabled = false;
+			kawa13.disabled = false;
+			// kawa14.disabled = true;
+			kawa15.disabled = false;
+			kawa16.disabled = false;
+			//ファーストバックの中身非表示
+			fColor.style.display = "none";
+			//ファーストバックの選択項目は無効
+			fColorDisabled_True();
+			//【画像】R画像の色　クリア
+			rColorImg_Clear();
+			//【画像】F画像の色　クリア
+			fColorImg_Clear();			
+
+	}
+	//1色に戻った場合
+	else {
+		rColor.style.display = "none";
+		fColor.style.display = "none";
+		//ファーストバックの選択項目は無効
+		fColorDisabled_True();
+		//レギュラーの選択項目は無効
+		rColorDisabled_True();
+		//R項目　「0」にする
+		rColorSelect_Clear();
+		//F項目　「0」にする
+		fColorSelect_Clear();
+	}
+
 
 	//多色カラー（レギュラー）
 	class ColorR{
@@ -1059,7 +1087,7 @@ const changeBoxColor = (newColor) => {
 			const kawaId2 = document.getElementById(obj.colorId2);
 			const imgRR2 = document.getElementsByClassName(obj.imgPlace2);
 
-			kawaId.onchange = () =>{
+			kawaId.addEventListener("change",() =>{
 				if( DS33.style.display ==="block" &&  kawaId2 == LC2List2){
 					for(let i = 0; i < imgR2.length; i++){
 						kawaId.value === "Fオレンジ" ? imgR2[i].style.fill = "#f13421":
@@ -1158,7 +1186,7 @@ const changeBoxColor = (newColor) => {
 					// console.log("2と3は別");
 					}
 				}
-			}
+			});
 		}
 	}
 	//「kawa1」
@@ -1271,7 +1299,7 @@ const changeBoxColor = (newColor) => {
 			const imgFF4 = document.getElementsByClassName(obj.imgPlace4);
 			const imgFF5 = document.getElementsByClassName(obj.imgPlace5);
     
-			kawaIdF.onchange = () =>{
+			kawaIdF.addEventListener("change", () =>{
 				if( kawaIdF2 == LC2List1012 || kawaIdF2 == LC2List1013 ){
 					//name 
 					for(let i = 0; i < imgFF2.length; i++){
@@ -1422,7 +1450,7 @@ const changeBoxColor = (newColor) => {
 					imgFF.style.fill = "#6c2735";  //バーガンディ
 					// console.log("ファーストオレンジ");
 				}
-			}
+			});
 		}
 	}
 	const colorF1 = new ColorF ({
@@ -1448,14 +1476,14 @@ const changeBoxColor = (newColor) => {
 	//ベルト　1つ変更で2か所色を付ける
 	const colorF11_1 = new ColorF ({
 		colorId: 'LC2List1011',
-		colorId2: 'LC2List1011',　//判定用
+		colorId2: 'LC2List1011',//判定用
 		imgPlace: 'bodyColor1011_left',
-		imgPlace3: 'bodyColor1011_right'　
+		imgPlace3: 'bodyColor1011_right'
 	});
 	//classname
 	const colorF12 = new ColorF ({
 		colorId: 'LC2List1012',
-		colorId2: 'LC2List1012',　//判定用
+		colorId2: 'LC2List1012',//判定用
 		imgPlace2: 'bodyColor1012'
 	});
 	//classname
@@ -1479,7 +1507,7 @@ const changeBoxColor = (newColor) => {
 	});
 }
 // 6-1【カラー】皮ひも画像カラー設定// // // // // // // // // // // // //
-himoColor.onchange = () => { 
+himoColor.addEventListener("change", () => { 
 	let himo = document.getElementsByClassName("himo");
 	for(let i = 0; i < himo.length; i++) {
 		himoColor.value === "Fオレンジ" ?	himo[i].style.fill = "#f13421":
@@ -1499,9 +1527,9 @@ himoColor.onchange = () => {
 		himoColor.value === "グリーン" ? himo[i].style.fill = "#0e4a2e":
 		himo[i].style.fill = "#6c2735";  //バーガンディ
 		}
-}
+});
 // 6-2【カラー】ハミダシカラー画像カラー設定// // // // // // // // // //
-hamiColor.onchange = () => { 
+hamiColor.addEventListener("change", () => { 
 	let hami = document.getElementsByClassName("hami");
 	for(let i = 0; i < hami.length; i++) {
 		hamiColor.value == "玉ハミFオレンジ" ? hami[i].style.fill = "#e55743":
@@ -1524,9 +1552,9 @@ hamiColor.onchange = () => {
 		hamiColor.value == "玉ハミバーガンディ" ? hami[i].style.fill = "#6c2735":
 		hami[i].style.fill = "#FFFFFB"; //"切ハミ白"  
 		}
-}
+});
 // 6-3【カラー】ヘリ皮カラー画像カラー設定 // // // // // // // // // // // 
-heriColor.onchange = () => { 
+heriColor.addEventListener("change", () => { 
 	let heri = document.getElementsByClassName("heri");
 	for(let i = 0; i < heri.length; i++) {
 		heriColor.value == "Fオレンジ"  ? heri[i].style.fill = "#e55743":
@@ -1548,9 +1576,9 @@ heriColor.onchange = () => {
 		heriColor.value == "シルバー" ? heri[i].style.fill = "#c9caca":
 		heri[i].style.fill = "#6c2735";  // "バーガンディ" 
 	}
-}
+});
 // 6-4【カラー】ステッチカラー*1の画像カラー設定 // // // // // // // // // // 
-stitchColor.onchange = () => { 
+stitchColor.addEventListener("change", () => { 
 	let sti = document.getElementsByClassName("stitch");
 	for(let i = 0; i < sti.length; i++) {
 		stitchColor.value == "白"  ? sti[i].style.fill = "#e2e7eb":
@@ -1570,9 +1598,9 @@ stitchColor.onchange = () => {
 		stitchColor.value == "イエロー" ? sti[i].style.fill = "#e3c125":
 		sti[i].style.fill = "#372ba6";  //"パープル" ?
 		}
-}
+});
 // 6-5【カラー】裏皮カラー*1の画像カラー設定// // // // // // // // // // //
-urakawaColor.onchange = () => { 
+urakawaColor.addEventListener("change", () => { 
 	let ura = document.getElementsByClassName("urakawa");
 		for(let i = 0; i < ura.length; i++) {
 		urakawaColor.value == "共皮　Fオレンジ"  ? ura[i].style.fill = "#f13421":
@@ -1592,123 +1620,139 @@ urakawaColor.onchange = () => {
 		urakawaColor.value == "共皮　水色" ? ura[i].style.fill = "#419cb1":
 		ura[i].style.fill = "#6c2735";  //共皮　バーガンディ"  
 		}
-}
+});
 // 7【画像】【カラー】選択した「ラベル」の表示とカラー設定 // // // // // // // 
-labelChange.onchange = () =>{
-	// labelChange.addEventListener('change', () =>{
+labelChange.addEventListener("change", () => {
+
 	let label_R = labelChange.value;
 
 	//バリューを全角で分割させる
-	let type = select.value.split('\u3000');
+	let type = baseSelect.value.split('\u3000');
 
   //Hラベルの色
 	let hlabel_back = document.getElementsByClassName("hlabel_back");
 	let hlabel_hon = document.getElementsByClassName("hlabel_hon");
 	let hlabel_logo = document.getElementsByClassName("hlabel_logo");
-	if(label_R == "H1　レッド×ゴールドラメ"){		
-		for(let i = 0; i < hlabel_back.length; i++){
-			for(let h = 0; h < hlabel_hon.length; h++){
-				for(let l = 0; l < hlabel_logo.length; l++){
-						hlabel_back[i].style.fill = "#b6281c";
-						hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
-						hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
-						}
-					}
-				}
-		 console.log("H1です");
-
-	} else if (label_R == "H2　ブルー×ゴールドラメ"){	
-		for(let i = 0; i < hlabel_back.length; i++){
-			for(let h = 0; h < hlabel_hon.length; h++){
-				for(let l = 0; l < hlabel_logo.length; l++){
-						hlabel_back[i].style.fill = "#272c6e";
-						hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
-						hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
-						}
-					}
-				}
-	}else if (label_R == "H3　水色×ゴールドラメ"){
-		for(let i = 0; i < hlabel_back.length; i++){
-			for(let h = 0; h < hlabel_hon.length; h++){
-				for(let l = 0; l < hlabel_logo.length; l++){
-								hlabel_back[i].style.fill = "#03a9f4";
-								hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
-								hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
-						}
-					}
-				}
-	}else if (label_R == "H4　ネイビー×ゴールドラメ"){
-		for(let i = 0; i < hlabel_back.length; i++){
-			for(let h = 0; h < hlabel_hon.length; h++){
-				for(let l = 0; l < hlabel_logo.length; l++){
-								hlabel_back[i].style.fill = "#252566";
-								hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
-								hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
-						}
-					}
-				}
-	}else if (label_R == "H5　ブラック×ゴールドラメ"){
-		for(let i = 0; i < hlabel_back.length; i++){
-			for(let h = 0; h < hlabel_hon.length; h++){
-				for(let l = 0; l < hlabel_logo.length; l++){
-								hlabel_back[i].style.fill = "#333333";
-								hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
-								hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
-						}
-					}
-				}
-	}else if (label_R == "H6　濃ピンク×ゴールドラメ"){
-		for(let i = 0; i < hlabel_back.length; i++){
-			for(let h = 0; h < hlabel_hon.length; h++){
-				for(let l = 0; l < hlabel_logo.length; l++){
-								hlabel_back[i].style.fill = "#ff69b4";
-								hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
-								hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
-						}
-					}
-				}
-	}else if (label_R == "H7　濃グリーン×ゴールドラメ"){
-		for(let i = 0; i < hlabel_back.length; i++){
-			for(let h = 0; h < hlabel_hon.length; h++){
-				for(let l = 0; l < hlabel_logo.length; l++){
-								hlabel_back[i].style.fill = "#2f4f4f";
-								hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
-								hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
-						}
-					}
-				}
-	}else if (label_R == "H8　パープル×ゴールドラメ"){
-		for(let i = 0; i < hlabel_back.length; i++){
-			for(let h = 0; h < hlabel_hon.length; h++){
-				for(let l = 0; l < hlabel_logo.length; l++){
-								hlabel_back[i].style.fill = "#800080";
-								hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
-								hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
-						}
-					}
-				}
-	}else if (label_R == "H9　ホワイト×ゴールドラメ"){
-					for(let i = 0; i < hlabel_back.length; i++){
-						for(let h = 0; h < hlabel_hon.length; h++){
-							for(let l = 0; l < hlabel_logo.length; l++){
-											hlabel_back[i].style.fill = "#e2e7eb";
-											hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
-											hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
-									}
-								}
-							}
-	}else{
-	}
-
 	//KラベルGラベルの色
 	let klabel_huti = document.getElementsByClassName("klabel_huti");
 	let klabel_logo = document.getElementsByClassName("klabel_logo");
-	if(label_R == "K7　ネイビー×ゴールドラメ"){
+	//Lラベルの色
+	let Llabel_huti = document.getElementsByClassName("Llabel_huti");
+	let Llabel_logo = document.getElementsByClassName("Llabel_logo");
+	let Llabel_sen = document.getElementsByClassName("Llabel_sen");
+	let Llabel_back = document.getElementsByClassName("Llabel_back");
+	//Mラベルの色
+	let Mlabel_logo = document.getElementsByClassName("Mlabel_logo");
+	let Mlabel_sublogo = document.getElementsByClassName("Mlabel_sublogo");
+	let Mlabel_back = document.getElementsByClassName("Mlabel_back");
+	let Mlabel_back2 = document.getElementsByClassName("Mlabel_back2");
+	let Mlabel_huti2 = document.getElementsByClassName("Mlabel_huti2");
+	//ABCラベルの色
+	let Alabel_logo = document.getElementsByClassName("Alabel_logo");
+	let Alabel_back = document.getElementsByClassName("Alabel_back");
+	let Alabel_hon = document.getElementsByClassName("Alabel_hon");
+	let Alabel_honhuti = document.getElementsByClassName("Alabel_honhuti");
+
+	//Hラベルの色
+	if(label_R == "H1　レッド×ゴールドラメ"){		
+		for(let i = 0; i < hlabel_back.length; i++){
+			hlabel_back[i].style.fill = "#b6281c";
+		}
+		for(let h = 0; h < hlabel_hon.length; h++){
+			hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let l = 0; l < hlabel_logo.length; l++){
+			hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
+		}				
+		 console.log("H1です");
+	} else if (label_R == "H2　ブルー×ゴールドラメ"){	
+		for(let i = 0; i < hlabel_back.length; i++){
+			hlabel_back[i].style.fill = "#272c6e";
+		}
+		for(let h = 0; h < hlabel_hon.length; h++){
+			hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let l = 0; l < hlabel_logo.length; l++){
+			hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
+		}		
+	} else if (label_R == "H3　水色×ゴールドラメ"){
+		for(let i = 0; i < hlabel_back.length; i++){
+			hlabel_back[i].style.fill = "#03a9f4";
+		}
+		for(let h = 0; h < hlabel_hon.length; h++){
+			hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let l = 0; l < hlabel_logo.length; l++){
+			hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
+		}	
+	} else if (label_R == "H4　ネイビー×ゴールドラメ"){
+		for(let i = 0; i < hlabel_back.length; i++){
+			hlabel_back[i].style.fill = "#252566";
+		}
+		for(let h = 0; h < hlabel_hon.length; h++){
+			hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let l = 0; l < hlabel_logo.length; l++){
+			hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
+		}	
+	} else if (label_R == "H5　ブラック×ゴールドラメ"){
+		for(let i = 0; i < hlabel_back.length; i++){
+			hlabel_back[i].style.fill = "#333333";
+		}
+		for(let h = 0; h < hlabel_hon.length; h++){
+			hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let l = 0; l < hlabel_logo.length; l++){
+			hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
+		}	
+	} else if (label_R == "H6　濃ピンク×ゴールドラメ"){
+		for(let i = 0; i < hlabel_back.length; i++){
+			hlabel_back[i].style.fill = "#ff69b4";
+		}
+		for(let h = 0; h < hlabel_hon.length; h++){
+			hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let l = 0; l < hlabel_logo.length; l++){
+			hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
+		}	
+	} else if (label_R == "H7　濃グリーン×ゴールドラメ"){
+		for(let i = 0; i < hlabel_back.length; i++){
+			hlabel_back[i].style.fill = "#2f4f4f";
+		}
+		for(let h = 0; h < hlabel_hon.length; h++){
+			hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let l = 0; l < hlabel_logo.length; l++){
+			hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
+		}	
+	} else if (label_R == "H8　パープル×ゴールドラメ"){
+		for(let i = 0; i < hlabel_back.length; i++){
+			hlabel_back[i].style.fill = "#800080";
+		}
+		for(let h = 0; h < hlabel_hon.length; h++){
+			hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let l = 0; l < hlabel_logo.length; l++){
+			hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
+		}	
+	} else if (label_R == "H9　ホワイト×ゴールドラメ"){
+		for(let i = 0; i < hlabel_back.length; i++){
+			hlabel_back[i].style.fill = "#e2e7eb";
+		}
+		for(let h = 0; h < hlabel_hon.length; h++){
+			hlabel_hon[h].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let l = 0; l < hlabel_logo.length; l++){
+			hlabel_logo[l].style.fill = "#c5a865"; //ゴールド
+		}	
+	} 
+	//KラベルGラベルの色
+	else if (label_R == "K7　ネイビー×ゴールドラメ"){
 		for(let i = 0; i < klabel_huti.length; i++){
 			klabel_huti[i].style.fill = "#221e49"; //ネイビー
 		}
 		for(let i = 0; i < klabel_logo.length; i++) {
-		klabel_logo[i].style.fill = "#c5a865"; //ゴールド
+			klabel_logo[i].style.fill = "#c5a865"; //ゴールド
 		}
 	} else if(label_R == "K9　ブラック×ゴールドラメ") {
 		for(let i = 0; i < klabel_huti.length; i++){
@@ -1716,8 +1760,7 @@ labelChange.onchange = () =>{
 		}
 		for(let i = 0; i < klabel_logo.length; i++) {
 			klabel_logo[i].style.fill = "#c5a865"; //ゴールド
-			}
-
+		}
 	} else if(label_R == "K11　ネイビー×水色ラメ") {
 		for(let i = 0; i < klabel_huti.length; i++){
 			klabel_huti[i].style.fill = "#221e49"; //ネイビー
@@ -1725,7 +1768,6 @@ labelChange.onchange = () =>{
 		for(let i = 0; i < klabel_logo.length; i++) {
 			klabel_logo[i].style.fill = "#03a9f4"; //水色ラメ
 			}
-
 	} else if(label_R == "K12　ネイビー×ピンクラメ") {
 		for(let i = 0; i < klabel_huti.length; i++){
 			klabel_huti[i].style.fill = "#221e49"; //ネイビー
@@ -1733,7 +1775,6 @@ labelChange.onchange = () =>{
 		for(let i = 0; i < klabel_logo.length; i++) {
 			klabel_logo[i].style.fill = "#f39df8"; //ピンクラメ
 		}
-
 	} else if(label_R == "K13　黒×赤") {
 		for(let i = 0; i < klabel_huti.length; i++){
 			klabel_huti[i].style.fill = "#2c3438"; //ブラック
@@ -1741,7 +1782,6 @@ labelChange.onchange = () =>{
 		for(let i = 0; i < klabel_logo.length; i++) {
 			klabel_logo[i].style.fill = "#cc0000"; //赤
 			}
-
 	} else if(label_R == "K14　レッド×ゴールドラメ") {
 		for(let i = 0; i < klabel_huti.length; i++){
 			klabel_huti[i].style.fill = "#cc0000"; //赤
@@ -1749,7 +1789,6 @@ labelChange.onchange = () =>{
 		for(let i = 0; i < klabel_logo.length; i++) {
 			klabel_logo[i].style.fill = "#c5a865"; //ゴールド
 			}
-
 	} else if(label_R == "K15　ブルー×ゴールドラメ") {
 		for(let i = 0; i < klabel_huti.length; i++){
 			klabel_huti[i].style.fill = "#0845be"; //ブルー
@@ -1757,7 +1796,6 @@ labelChange.onchange = () =>{
 		for(let i = 0; i < klabel_logo.length; i++) {
 			klabel_logo[i].style.fill ="#c5a865"; //ゴールド
 			}
-
 	} else if(label_R == "K16　水色×ゴールドラメ") {
 		for(let i = 0; i < klabel_huti.length; i++){
 			klabel_huti[i].style.fill = "#00a4d6"; //水色
@@ -1772,8 +1810,6 @@ labelChange.onchange = () =>{
 		for(let i = 0; i < klabel_logo.length; i++) {
 			klabel_logo[i].style.fill ="#c5a865"; //ゴールド
 		}
-
-
 	} else if(label_R == "K18　濃グリーン×ゴールドラメ") {
 		for(let i = 0; i < klabel_huti.length; i++){
 			klabel_huti[i].style.fill = "#1b574c"; //濃グリーン
@@ -1781,7 +1817,6 @@ labelChange.onchange = () =>{
 		for(let i = 0; i < klabel_logo.length; i++) {
 			klabel_logo[i].style.fill ="#c5a865"; //ゴールド
 		}
-
 	} else if(label_R == "K22　パープル×ゴールドラメ") {
 		for(let i = 0; i < klabel_huti.length; i++){
 			klabel_huti[i].style.fill = "#350886"; //パープル
@@ -1789,7 +1824,6 @@ labelChange.onchange = () =>{
 		for(let i = 0; i < klabel_logo.length; i++) {
 			klabel_logo[i].style.fill ="#c5a865"; //ゴールド
 		}
-
 	} else if(label_R == "K24　ライトゴールド×Dブラウン") {
 		for(let i = 0; i < klabel_huti.length; i++){
 			klabel_huti[i].style.fill = "#b39978"; //Lゴールド
@@ -1797,7 +1831,6 @@ labelChange.onchange = () =>{
 		for(let i = 0; i < klabel_logo.length; i++) {
 			klabel_logo[i].style.fill ="#330d0d"; //ダークブラウン
 		}	
-
 	} else if(label_R == "K1　レッド×ホワイト") {
 		for(let i = 0; i < klabel_huti.length; i++){
 			klabel_huti[i].style.fill = "#cc0000"; //レッド
@@ -1812,7 +1845,6 @@ labelChange.onchange = () =>{
 		for(let i = 0; i < klabel_logo.length; i++) {
 			klabel_logo[i].style.fill = "#e2e7eb"  //ホワイト
 			}
-
 	} else if(label_R == "K3　水色×ホワイト"){
 			for(let i = 0; i < klabel_huti.length; i++){
 				klabel_huti[i].style.fill = "#5bb8e6"; //水色
@@ -1848,7 +1880,6 @@ labelChange.onchange = () =>{
 		for(let i = 0; i < klabel_logo.length; i++) {
 			klabel_logo[i].style.fill = "#dfdfdf"; //シルバー
 			}
-
 	} else if(label_R == "K10　黒×シルバーラメ") {
 		for(let i = 0; i < klabel_huti.length; i++){
 			klabel_huti[i].style.fill = "#2c3438"; //ブラック
@@ -1856,14 +1887,12 @@ labelChange.onchange = () =>{
 		for(let i = 0; i < klabel_logo.length; i++) {
 			klabel_logo[i].style.fill = "#dfdfdf"; //シルバー
 			}
-
 	} else if(label_R == "K19　ホワイト×レッドラメ") {
 		for(let i = 0; i < klabel_huti.length; i++){
 			klabel_huti[i].style.fill = "#ffffff"  //ホワイト
 		}for(let i = 0; i < klabel_logo.length; i++) {
 			klabel_logo[i].style.fill = "#cc0000"; //赤
 			}
-
 	} else if(label_R == "K20　ホワイト×ブルーラメ") {
 			for(let i = 0; i < klabel_huti.length; i++){
 				klabel_huti[i].style.fill = "#ffffff"  //ホワイト
@@ -1878,7 +1907,6 @@ labelChange.onchange = () =>{
 		for(let i = 0; i < klabel_logo.length; i++) {
 			klabel_logo[i].style.fill = "#11612c"; //グリーン
 			}
-
 	} else if(label_R == "K23　ホワイト×ゴールドラメ") {
 		for(let i = 0; i < klabel_huti.length; i++){
 			klabel_huti[i].style.fill = "#ffffff"  //ホワイト
@@ -1964,482 +1992,504 @@ labelChange.onchange = () =>{
 			klabel_logo[i].style.fill = "#e2e7eb"; //シルヴァー
 			}	
 			console.log("SA1です");	
-	}else{
-	}
-
+	} 
 	//Lラベルの色
-	let Llabel_huti = document.getElementsByClassName("Llabel_huti");
-	let Llabel_logo = document.getElementsByClassName("Llabel_logo");
-	let Llabel_sen = document.getElementsByClassName("Llabel_sen");
-	let Llabel_back = document.getElementsByClassName("Llabel_back");
-	if(label_R == "L2　赤×ゴールドラメ/ネイビー"){
+	else if(label_R == "L2　赤×ゴールドラメ/ネイビー"){
 		for(let i = 0; i < Llabel_huti.length; i++){
-			for(let l = 0; l < Llabel_logo.length; l++) {
-				for(let s = 0; s < Llabel_sen.length; s++) {
-					for(let b = 0; b < Llabel_back.length; b++) {
-						Llabel_huti[i].style.fill = "#221e49"; //ネイビー
-						Llabel_logo[l].style.fill = "#c5a865"; //ゴールド
-						Llabel_sen[s].style.fill = "#c5a865"; //ゴールド
-						Llabel_back[b].style.fill = "#cc0000"; //赤
-						}
-					}
-				}
-			}
-
+			Llabel_huti[i].style.fill = "#221e49"; //ネイビー
+		}
+		for(let l = 0; l < Llabel_logo.length; l++) {
+			Llabel_logo[l].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let s = 0; s < Llabel_sen.length; s++) {
+			Llabel_sen[s].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let b = 0; b < Llabel_back.length; b++) {
+			Llabel_back[b].style.fill = "#cc0000"; //赤
+		}
 	} else if(label_R == "L4　ブルー×ゴールドラメ/赤"){
 		for(let i = 0; i < Llabel_huti.length; i++){
-			for(let l = 0; l < Llabel_logo.length; l++) {
-				for(let s = 0; s < Llabel_sen.length; s++) {
-					for(let b = 0; b < Llabel_back.length; b++) {
-						Llabel_huti[i].style.fill = "#cc0000"; //赤
-						Llabel_logo[l].style.fill = "#c5a865"; //ゴールド
-						Llabel_sen[s].style.fill = "#c5a865"; //ゴールド
-						Llabel_back[b].style.fill = "#1237b1"; //ブルー
-						}
-					}
-				}
-			}
+			Llabel_huti[i].style.fill = "#cc0000"; //赤
+		}
+		for(let l = 0; l < Llabel_logo.length; l++) {
+			Llabel_logo[l].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let s = 0; s < Llabel_sen.length; s++) {
+			Llabel_sen[s].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let b = 0; b < Llabel_back.length; b++) {
+			Llabel_back[b].style.fill = "#1237b1"; //ブルー
+		}
 	} else if(label_R == "L6　ネイビー×ゴールドラメ/赤"){
 		for(let i = 0; i < Llabel_huti.length; i++){
-			for(let l = 0; l < Llabel_logo.length; l++) {
-				for(let s = 0; s < Llabel_sen.length; s++) {
-					for(let b = 0; b < Llabel_back.length; b++) {
-						Llabel_huti[i].style.fill = "#cc0000"; //赤
-						Llabel_logo[l].style.fill = "#c5a865"; //ゴールド
-						Llabel_sen[s].style.fill = "#c5a865"; //ゴールド
-						Llabel_back[b].style.fill = "#221e49"; //ネイビー
-						}
-					}
-				}
-			}
+			Llabel_huti[i].style.fill = "#cc0000"; //赤
+		}
+		for(let l = 0; l < Llabel_logo.length; l++) {
+			Llabel_logo[l].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let s = 0; s < Llabel_sen.length; s++) {
+			Llabel_sen[s].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let b = 0; b < Llabel_back.length; b++) {
+			Llabel_back[b].style.fill = "#221e49"; //ネイビー
+		}
 	} else if(label_R == "L11　ピンク×ピンク/赤"){
 		for(let i = 0; i < Llabel_huti.length; i++){
-			for(let l = 0; l < Llabel_logo.length; l++) {
-				for(let s = 0; s < Llabel_sen.length; s++) {
-					for(let b = 0; b < Llabel_back.length; b++) {
-						Llabel_huti[i].style.fill = "#cc0000"; //赤
-						Llabel_logo[l].style.fill = "#facefd"; //ピンク
-						Llabel_sen[s].style.fill = "#cc0000"; //赤
-						Llabel_back[b].style.fill = "#fab5ff"; //ピンク
-						}
-					}
-				}
-			}
+			Llabel_huti[i].style.fill = "#cc0000"; //赤
+		}
+		for(let l = 0; l < Llabel_logo.length; l++) {
+			Llabel_logo[l].style.fill = "#facefd"; //ピンク
+		}
+		for(let s = 0; s < Llabel_sen.length; s++) {
+			Llabel_sen[s].style.fill = "#cc0000"; //赤
+		}
+		for(let b = 0; b < Llabel_back.length; b++) {
+			Llabel_back[b].style.fill = "#fab5ff"; //ピンク
+		}
 	} else if(label_R == "L1　赤×白/ネイビー"){
 		for(let i = 0; i < Llabel_huti.length; i++){
-			for(let l = 0; l < Llabel_logo.length; l++) {
-				for(let s = 0; s < Llabel_sen.length; s++) {
-					for(let b = 0; b < Llabel_back.length; b++) {
-						Llabel_huti[i].style.fill = "#221e49"; //ネイビー
-						Llabel_logo[l].style.fill = "#e2e7eb"  //ホワイト
-						Llabel_sen[s].style.fill = "#e2e7eb"  //ホワイト
-						Llabel_back[b].style.fill = "#cc0000"; //赤
-						}
-					}
-				}
-			}
+			Llabel_huti[i].style.fill = "#221e49"; //ネイビー
+		}
+		for(let l = 0; l < Llabel_logo.length; l++) {
+			Llabel_logo[l].style.fill = "#e2e7eb"  //ホワイト
+		}
+		for(let s = 0; s < Llabel_sen.length; s++) {
+			Llabel_sen[s].style.fill = "#e2e7eb"  //ホワイト
+		}
+		for(let b = 0; b < Llabel_back.length; b++) {
+			Llabel_back[b].style.fill = "#cc0000"; //赤
+		}
 	} else if(label_R == "B7　黒×黒/ゴールドラメ"){
 		for(let i = 0; i < Llabel_huti.length; i++){
-			for(let l = 0; l < Llabel_logo.length; l++) {
-				for(let s = 0; s < Llabel_sen.length; s++) {
-					for(let b = 0; b < Llabel_back.length; b++) {
-						Llabel_huti[i].style.fill = "#ffd700"; //ゴールド
-						Llabel_logo[l].style.fill = "#2c3438"; //ブラック
-						Llabel_sen[s].style.fill = "#ffd700"; //ゴールド
-						Llabel_back[b].style.fill = "#2c3438"; //ブラック
-						}
-					}
-				}
-			}
+			Llabel_huti[i].style.fill = "#ffd700"; //ゴールド
+		}
+		for(let l = 0; l < Llabel_logo.length; l++) {
+			Llabel_logo[l].style.fill = "#2c3438"; //ブラック
+		}
+		for(let s = 0; s < Llabel_sen.length; s++) {
+			Llabel_sen[s].style.fill = "#ffd700"; //ゴールド
+		}
+		for(let b = 0; b < Llabel_back.length; b++) {
+			Llabel_back[b].style.fill = "#2c3438"; //ブラック
+		}
 	} else if(label_R == "L3　ブルー×白/赤"){
 		for(let i = 0; i < Llabel_huti.length; i++){
-			for(let l = 0; l < Llabel_logo.length; l++) {
-				for(let s = 0; s < Llabel_sen.length; s++) {
-					for(let b = 0; b < Llabel_back.length; b++) {
-						Llabel_huti[i].style.fill = "#cc0000"; //赤
-						Llabel_logo[l].style.fill = "#e2e7eb"  //ホワイト
-						Llabel_sen[s].style.fill = "#e2e7eb"  //ホワイト
-						Llabel_back[b].style.fill = "#0f25a1"; //ブルー
-						}
-					}
-				}
-			}
+			Llabel_huti[i].style.fill = "#cc0000"; //赤
+		}
+		for(let l = 0; l < Llabel_logo.length; l++) {
+			Llabel_logo[l].style.fill = "#e2e7eb"  //ホワイト
+		}
+		for(let s = 0; s < Llabel_sen.length; s++) {
+			Llabel_sen[s].style.fill = "#e2e7eb"  //ホワイト
+		}
+		for(let b = 0; b < Llabel_back.length; b++) {
+			Llabel_back[b].style.fill = "#0f25a1"; //ブルー
+		}
 	} else if(label_R == "L5　ネイビー×白/赤"){
 		for(let i = 0; i < Llabel_huti.length; i++){
-			for(let l = 0; l < Llabel_logo.length; l++) {
-				for(let s = 0; s < Llabel_sen.length; s++) {
-					for(let b = 0; b < Llabel_back.length; b++) {
-						Llabel_huti[i].style.fill = "#cc0000"; //赤
-						Llabel_logo[l].style.fill = "#e2e7eb"  //ホワイト
-						Llabel_sen[s].style.fill = "#e2e7eb"  //ホワイト
-						Llabel_back[b].style.fill = "#221e49"; //ネイビー
-						}
-					}
-				}
-			}
+			Llabel_huti[i].style.fill = "#cc0000"; //赤
+		}
+		for(let l = 0; l < Llabel_logo.length; l++) {
+			Llabel_logo[l].style.fill = "#e2e7eb"  //ホワイト
+		}
+		for(let s = 0; s < Llabel_sen.length; s++) {
+			Llabel_sen[s].style.fill = "#e2e7eb"  //ホワイト
+		}
+		for(let b = 0; b < Llabel_back.length; b++) {
+			Llabel_back[b].style.fill = "#221e49"; //ネイビー
+		}
 	} else if(label_R == "L7　水色×白/ネイビー"){
 		for(let i = 0; i < Llabel_huti.length; i++){
-			for(let l = 0; l < Llabel_logo.length; l++) {
-				for(let s = 0; s < Llabel_sen.length; s++) {
-					for(let b = 0; b < Llabel_back.length; b++) {
-						Llabel_huti[i].style.fill = "#221e49"; //ネイビー
-						Llabel_logo[l].style.fill = "#e2e7eb"  //ホワイト
-						Llabel_sen[s].style.fill = "#e2e7eb"  //ホワイト
-						Llabel_back[b].style.fill = "#5bb8e6"; //水色
-						}
-					}
-				}
-			}
+			Llabel_huti[i].style.fill = "#221e49"; //ネイビー
+		}
+		for(let l = 0; l < Llabel_logo.length; l++) {
+			Llabel_logo[l].style.fill = "#e2e7eb"  //ホワイト
+		}
+		for(let s = 0; s < Llabel_sen.length; s++) {
+			Llabel_sen[s].style.fill = "#e2e7eb"  //ホワイト
+		}
+		for(let b = 0; b < Llabel_back.length; b++) {
+			Llabel_back[b].style.fill = "#5bb8e6"; //水色
+		}
 	} else if(label_R == "L8　濃グリーン×白/ネイビー"){
 		for(let i = 0; i < Llabel_huti.length; i++){
-			for(let l = 0; l < Llabel_logo.length; l++) {
-				for(let s = 0; s < Llabel_sen.length; s++) {
-					for(let b = 0; b < Llabel_back.length; b++) {
-						Llabel_huti[i].style.fill = "#221e49"; //ネイビー
-						Llabel_logo[l].style.fill = "#e2e7eb"  //ホワイト
-						Llabel_sen[s].style.fill = "#e2e7eb"  //ホワイト
-						Llabel_back[b].style.fill = "#18554a"; //濃いグリーン
-						}
-					}
-				}
-			}
+			Llabel_huti[i].style.fill = "#221e49"; //ネイビー
+		}
+		for(let l = 0; l < Llabel_logo.length; l++) {
+			Llabel_logo[l].style.fill = "#e2e7eb"  //ホワイト
+		}
+		for(let s = 0; s < Llabel_sen.length; s++) {
+			Llabel_sen[s].style.fill = "#e2e7eb"  //ホワイト
+		}
+		for(let b = 0; b < Llabel_back.length; b++) {
+			Llabel_back[b].style.fill = "#18554a"; //濃いグリーン
+		}
 	} else if(label_R == "L9　イエロー×白/ネイビー"){
 		for(let i = 0; i < Llabel_huti.length; i++){
-			for(let l = 0; l < Llabel_logo.length; l++) {
-				for(let s = 0; s < Llabel_sen.length; s++) {
-					for(let b = 0; b < Llabel_back.length; b++) {
-						Llabel_huti[i].style.fill = "#221e49"; //ネイビー
-						Llabel_logo[l].style.fill = "#e2e7eb"  //ホワイト
-						Llabel_sen[s].style.fill = "#e2e7eb"  //ホワイト
-						Llabel_back[b].style.fill = "#ffeb3b"; //イエロー
-						}
-					}
-				}
-			}
+			Llabel_huti[i].style.fill = "#221e49"; //ネイビー
+		}
+		for(let l = 0; l < Llabel_logo.length; l++) {
+			Llabel_logo[l].style.fill = "#e2e7eb"  //ホワイト
+		}
+		for(let s = 0; s < Llabel_sen.length; s++) {
+			Llabel_sen[s].style.fill = "#e2e7eb"  //ホワイト
+		}
+		for(let b = 0; b < Llabel_back.length; b++) {
+			Llabel_back[b].style.fill = "#ffeb3b"; //イエロー
+		}
 	} else if(label_R == "L10　オレンジ×白/ネイビー"){
 		for(let i = 0; i < Llabel_huti.length; i++){
-			for(let l = 0; l < Llabel_logo.length; l++) {
-				for(let s = 0; s < Llabel_sen.length; s++) {
-					for(let b = 0; b < Llabel_back.length; b++) {
-						Llabel_huti[i].style.fill = "#221e49"; //ネイビー
-						Llabel_logo[l].style.fill = "#e2e7eb"  //ホワイト
-						Llabel_sen[s].style.fill = "#e2e7eb"  //ホワイト
-						Llabel_back[b].style.fill = "#e17039"; //オレンジ
-						}
-					}
-				}
-			}
+			Llabel_huti[i].style.fill = "#221e49"; //ネイビー
+		}
+		for(let l = 0; l < Llabel_logo.length; l++) {
+			Llabel_logo[l].style.fill = "#e2e7eb"  //ホワイト
+		}
+		for(let s = 0; s < Llabel_sen.length; s++) {
+			Llabel_sen[s].style.fill = "#e2e7eb"  //ホワイト
+		}
+		for(let b = 0; b < Llabel_back.length; b++) {
+			Llabel_back[b].style.fill = "#e17039"; //オレンジ
+		}
 	} else if(label_R == "B8　黒×黒/シルバーラメ"){
 		for(let i = 0; i < Llabel_huti.length; i++){
-			for(let l = 0; l < Llabel_logo.length; l++) {
-				for(let s = 0; s < Llabel_sen.length; s++) {
-					for(let b = 0; b < Llabel_back.length; b++) {
-						Llabel_huti[i].style.fill = "#C0C0C0"; //シルバー
-						Llabel_logo[l].style.fill = "#2c3438"; //ブラック
-						Llabel_sen[s].style.fill = "#C0C0C0"  //シルバー
-						Llabel_back[b].style.fill = "#2c3438"; //ブラック
-						}
-					}
-				}
-			}
-	}else{
-	}
-
-    //Mラベルの色
-	let Mlabel_logo = document.getElementsByClassName("Mlabel_logo");
-	let Mlabel_sublogo = document.getElementsByClassName("Mlabel_sublogo");
-	let Mlabel_back = document.getElementsByClassName("Mlabel_back");
-	let Mlabel_back2 = document.getElementsByClassName("Mlabel_back2");
-	let Mlabel_huti2 = document.getElementsByClassName("Mlabel_huti2");
-	if(label_R == "M1　ブルー×ゴールドラメ/レッド"){
-		for(let i = 0; i < Mlabel_logo.length; i++) {
-			for(let x = 0; x < Mlabel_sublogo.length; x++) {
-				for(let b = 0; b < Mlabel_back.length; b++) {
-					for(let b2 = 0; b2 < Mlabel_back2.length; b2++) {
-						for(let h2 = 0; h2 < Mlabel_huti2.length; h2++) {
-						Mlabel_logo[i].style.fill = "#c5a865"; //ゴールド
-						Mlabel_sublogo[x].style.fill = "#c5a865"; //ゴールド
-						Mlabel_back[b].style.fill = "#210ed6"; //ブルー
-						Mlabel_back2[b2].style.fill = "#210ed6"; //ブルー
-						Mlabel_huti2[h2].style.fill = "#cc0000"; //赤
-						}
-					}
-				}
-			}		
+			Llabel_huti[i].style.fill = "#C0C0C0"; //シルバー
 		}
-
+		for(let l = 0; l < Llabel_logo.length; l++) {
+			Llabel_logo[l].style.fill = "#2c3438"; //ブラック
+		}
+		for(let s = 0; s < Llabel_sen.length; s++) {
+			Llabel_sen[s].style.fill = "#C0C0C0"  //シルバー
+		}
+		for(let b = 0; b < Llabel_back.length; b++) {
+			Llabel_back[b].style.fill = "#2c3438"; //ブラック
+		}
+	}	
+	//Mラベルの色
+	else if(label_R == "M1　ブルー×ゴールドラメ/レッド"){
+		for(let i = 0; i < Mlabel_logo.length; i++) {
+			Mlabel_logo[i].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let x = 0; x < Mlabel_sublogo.length; x++) {
+			Mlabel_sublogo[x].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let b = 0; b < Mlabel_back.length; b++) {
+			Mlabel_back[b].style.fill = "#210ed6"; //ブルー
+		}
+		for(let b2 = 0; b2 < Mlabel_back2.length; b2++) {
+			Mlabel_back2[b2].style.fill = "#210ed6"; //ブルー
+		}
+		for(let h2 = 0; h2 < Mlabel_huti2.length; h2++) {
+			Mlabel_huti2[h2].style.fill = "#cc0000"; //赤
+		}
 	} else if(label_R == "M2　ネイビー×ゴールドラメ/レッド"){
 		for(let i = 0; i < Mlabel_logo.length; i++) {
-			for(let x = 0; x < Mlabel_sublogo.length; x++) {
-				for(let b = 0; b < Mlabel_back.length; b++) {
-					for(let b2 = 0; b2 < Mlabel_back2.length; b2++) {
-						for(let h2 = 0; h2 < Mlabel_huti2.length; h2++) {
-						Mlabel_logo[i].style.fill = "#c5a865"; //ゴールド
-						Mlabel_sublogo[x].style.fill = "#c5a865"; //ゴールド
-						Mlabel_back[b].style.fill = "#221e49"; //ネイビー
-						Mlabel_back2[b2].style.fill = "#221e49"; //ネイビー
-						Mlabel_huti2[h2].style.fill = "#cc0000"; //赤
-						}
-					}		
-				}
-			}
+			Mlabel_logo[i].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let x = 0; x < Mlabel_sublogo.length; x++) {
+			Mlabel_sublogo[x].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let b = 0; b < Mlabel_back.length; b++) {
+			Mlabel_back[b].style.fill = "#221e49"; //ネイビー
+		}
+		for(let b2 = 0; b2 < Mlabel_back2.length; b2++) {
+			Mlabel_back2[b2].style.fill = "#221e49"; //ネイビー
+		}
+		for(let h2 = 0; h2 < Mlabel_huti2.length; h2++) {
+			Mlabel_huti2[h2].style.fill = "#cc0000"; //赤
 		}
 	} else if(label_R == "M3　ブラック×ゴールドラメ/レッド"){
 		for(let i = 0; i < Mlabel_logo.length; i++) {
-			for(let x = 0; x < Mlabel_sublogo.length; x++) {
-				for(let b = 0; b < Mlabel_back.length; b++) {
-					for(let b2 = 0; b2 < Mlabel_back2.length; b2++) {
-						for(let h2 = 0; h2 < Mlabel_huti2.length; h2++) {
-						Mlabel_logo[i].style.fill = "#c5a865"; //ゴールド
-						Mlabel_sublogo[x].style.fill = "#c5a865"; //ゴールド
-						Mlabel_back[b].style.fill = "#2c3438"; //ブラック
-						Mlabel_back2[b2].style.fill = "#2c3438"; //ブラック
-						Mlabel_huti2[h2].style.fill = "#cc0000"; //赤
-						}
-					}	
-				}
-			}		
+			Mlabel_logo[i].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let x = 0; x < Mlabel_sublogo.length; x++) {
+			Mlabel_sublogo[x].style.fill = "#c5a865"; //ゴールド
+		}
+		for(let b = 0; b < Mlabel_back.length; b++) {
+			Mlabel_back[b].style.fill = "#2c3438"; //ブラック
+		}
+		for(let b2 = 0; b2 < Mlabel_back2.length; b2++) {
+			Mlabel_back2[b2].style.fill = "#2c3438"; //ブラック
+		}
+		for(let h2 = 0; h2 < Mlabel_huti2.length; h2++) {
+			Mlabel_huti2[h2].style.fill = "#cc0000"; //赤
 		}
 	} else if(label_R == "M4　ライトゴールド×ゴールドラメ/Dブラウン"){
 		for(let i = 0; i < Mlabel_logo.length; i++) {
-			for(let x = 0; x < Mlabel_sublogo.length; x++) {
-				for(let b = 0; b < Mlabel_back.length; b++) {
-					for(let b2 = 0; b2 < Mlabel_back2.length; b2++) {
-						for(let h2 = 0; h2 < Mlabel_huti2.length; h2++) {
-						Mlabel_logo[i].style.fill = "#c5a865"; //ゴールド
-						Mlabel_sublogo[x].style.fill = "#332214"; //Dブラウン
-						Mlabel_back[b].style.fill = "#f5deb3"; //Lゴールド
-						Mlabel_back2[b2].style.fill = "#332214"; //Dブラウン
-						Mlabel_huti2[h2].style.fill = "#deb06f"; //ゴールドラメ
-						}
-					}	
-				}
-			}		
+			Mlabel_logo[i].style.fill = "#c5a865"; //ゴールド
 		}
-	}
-	
-
-    //ABCラベルの色
-	let Alabel_logo = document.getElementsByClassName("Alabel_logo");
-	let Alabel_back = document.getElementsByClassName("Alabel_back");
-	let Alabel_hon = document.getElementsByClassName("Alabel_hon");
-	let Alabel_honhuti = document.getElementsByClassName("Alabel_honhuti");
-	if(label_R == "D　グレー×水色/紺"){
+		for(let x = 0; x < Mlabel_sublogo.length; x++) {
+			Mlabel_sublogo[x].style.fill = "#332214"; //Dブラウン
+		}
+		for(let b = 0; b < Mlabel_back.length; b++) {
+			Mlabel_back[b].style.fill = "#f5deb3"; //Lゴールド
+		}
+		for(let b2 = 0; b2 < Mlabel_back2.length; b2++) {
+			Mlabel_back2[b2].style.fill = "#332214"; //Dブラウン
+		}
+		for(let h2 = 0; h2 < Mlabel_huti2.length; h2++) {
+			Mlabel_huti2[h2].style.fill = "#deb06f"; //ゴールドラメ
+		}
+	} 
+	//ABCラベルの色
+	else if(label_R == "D　グレー×水色/紺"){
 		for(let i = 0; i < Alabel_logo.length; i++) {
-			for(let b = 0; b < Alabel_back.length; b++) {
-				for(let h = 0; h < Alabel_hon.length; h++) {
-					for(let hh = 0; hh < Alabel_honhuti.length; hh++) {
-						Alabel_logo[i].style.fill = "#5bb8e6"; //水色
-						Alabel_back[b].style.fill = "#dfdfdf"; //シルバー
-						Alabel_hon[h].style.fill = "#5bb8e6"; //水色
-						Alabel_honhuti[hh].style.fill = "#2c3438"; //ブラック
-						}
-					}
-				}
-			}
-
+			Alabel_logo[i].style.fill = "#5bb8e6"; //水色
+		}
+		for(let b = 0; b < Alabel_back.length; b++) {
+			Alabel_back[b].style.fill = "#dfdfdf"; //シルバー
+		}
+		for(let h = 0; h < Alabel_hon.length; h++) {
+			Alabel_hon[h].style.fill = "#5bb8e6"; //水色
+		}
+		for(let hh = 0; hh < Alabel_honhuti.length; hh++) {
+			Alabel_honhuti[hh].style.fill = "#2c3438"; //ブラック
+		}
 	} else if(label_R == "E　グレー×グリーン/紺") {
 		for(let i = 0; i < Alabel_logo.length; i++) {
-			for(let b = 0; b < Alabel_back.length; b++) {
-				for(let h = 0; h < Alabel_hon.length; h++) {
-					for(let hh = 0; hh < Alabel_honhuti.length; hh++) {
-						Alabel_logo[i].style.fill = "#38ce0f"; //ゴールド
-						Alabel_back[b].style.fill = "#dfdfdf"; //シルバー
-						Alabel_hon[h].style.fill = "#38ce0f"; //ゴールド
-						Alabel_honhuti[hh].style.fill = "#2c3438"; //ブラック
-						}
-					}
-				}
-			}
+			Alabel_logo[i].style.fill = "#38ce0f"; //緑
+		}
+		for(let b = 0; b < Alabel_back.length; b++) {
+			Alabel_back[b].style.fill = "#dfdfdf"; //シルバー
+		}
+		for(let h = 0; h < Alabel_hon.length; h++) {
+			Alabel_hon[h].style.fill = "#38ce0f"; //緑
+		}
+		for(let hh = 0; hh < Alabel_honhuti.length; hh++) {
+			Alabel_honhuti[hh].style.fill = "#2c3438"; //ブラック
+		}
 	} else if(label_R == "F　グレー×イエロー/黒") {
 		for(let i = 0; i < Alabel_logo.length; i++) {
-			for(let b = 0; b < Alabel_back.length; b++) {
-				for(let h = 0; h < Alabel_hon.length; h++) {
-					for(let hh = 0; hh < Alabel_honhuti.length; hh++) {
-						Alabel_logo[i].style.fill = "#e3cc0c"; //イエロー
-						Alabel_back[b].style.fill = "#dfdfdf"; //シルバー
-						Alabel_hon[h].style.fill = "#e3cc0c"; //イエロー
-						Alabel_honhuti[hh].style.fill = "#2c3438"; //ブラック
-						}
-					}
-				}
-			}
+			Alabel_logo[i].style.fill = "#e3cc0c"; //イエロー
+		}
+		for(let b = 0; b < Alabel_back.length; b++) {
+			Alabel_back[b].style.fill = "#dfdfdf"; //シルバー
+		}
+		for(let h = 0; h < Alabel_hon.length; h++) {
+			Alabel_hon[h].style.fill = "#e3cc0c"; //イエロー
+		}
+		for(let hh = 0; hh < Alabel_honhuti.length; hh++) {
+			Alabel_honhuti[hh].style.fill = "#2c3438"; //ブラック
+		}
 	} else if(label_R == "H　グレー×赤/ゴールド") {
 		for(let i = 0; i < Alabel_logo.length; i++) {
-			for(let b = 0; b < Alabel_back.length; b++) {
-				for(let h = 0; h < Alabel_hon.length; h++) {
-					for(let hh = 0; hh < Alabel_honhuti.length; hh++) {
-						Alabel_logo[i].style.fill = "#e17039"; //オレンジ
-						Alabel_back[b].style.fill = "#dfdfdf"; //シルバー
-						Alabel_hon[h].style.fill = "#e17039"; //オレンジ
-						Alabel_honhuti[hh].style.fill = "#e3cc0c"; //イエロー
-						}
-					}
-				}
-			}
+			Alabel_logo[i].style.fill = "#cc0000"; //赤
+		}
+		for(let b = 0; b < Alabel_back.length; b++) {
+			Alabel_back[b].style.fill = "#dfdfdf"; //シルバー
+		}
+		for(let h = 0; h < Alabel_hon.length; h++) {
+			Alabel_hon[h].style.fill = "#cc0000"; //赤
+		}
+		for(let hh = 0; hh < Alabel_honhuti.length; hh++) {
+			Alabel_honhuti[hh].style.fill = "#e3cc0c"; //イエロー
+		}
 	} else if(label_R == "J　グレー×ピンク/紺") {
 		for(let i = 0; i < Alabel_logo.length; i++) {
-			for(let b = 0; b < Alabel_back.length; b++) {
-				for(let h = 0; h < Alabel_hon.length; h++) {
-					for(let hh = 0; hh < Alabel_honhuti.length; hh++) {
-						Alabel_logo[i].style.fill = "#ff568f"; //ピンク
-						Alabel_back[b].style.fill = "#dfdfdf"; //シルバー
-						Alabel_hon[h].style.fill = "#ff568f"; //ピンク
-						Alabel_honhuti[hh].style.fill = "#2c3438"; //ブラック
-						}
-					}
-				}
-			}
+			Alabel_logo[i].style.fill = "#ff568f"; //ピンク
+		}
+		for(let b = 0; b < Alabel_back.length; b++) {
+			Alabel_back[b].style.fill = "#dfdfdf"; //シルバー
+		}
+		for(let h = 0; h < Alabel_hon.length; h++) {
+			Alabel_hon[h].style.fill = "#ff568f"; //ピンク
+		}
+		for(let hh = 0; hh < Alabel_honhuti.length; hh++) {
+			Alabel_honhuti[hh].style.fill = "#2c3438"; //ブラック
+		}
 	} else if(label_R == "U　グレー×オレンジ") {
 		for(let i = 0; i < Alabel_logo.length; i++) {
-			for(let b = 0; b < Alabel_back.length; b++) {
-				for(let h = 0; h < Alabel_hon.length; h++) {
-					for(let hh = 0; hh < Alabel_honhuti.length; hh++) {
-						Alabel_logo[i].style.fill = "#e17039"; //オレンジ
-						Alabel_back[b].style.fill = "#dfdfdf"; //シルバー
-						Alabel_hon[h].style.fill = "#e17039"; //オレンジ
-						Alabel_honhuti[hh].style.fill = "#2c3438"; //ブラック
-						}
-					}
-				}
-			}
-	} else if(label_R == "V　ライトゴールド/Dブラウン×ゴールドラメ") {
+			Alabel_logo[i].style.fill = "#e17039"; //オレンジ
+		}
+		for(let b = 0; b < Alabel_back.length; b++) {
+			Alabel_back[b].style.fill = "#dfdfdf"; //シルバー
+		}
+		for(let h = 0; h < Alabel_hon.length; h++) {
+			Alabel_hon[h].style.fill = "#e17039"; //オレンジ
+		}
+		for(let hh = 0; hh < Alabel_honhuti.length; hh++) {
+			Alabel_honhuti[hh].style.fill = "#2c3438"; //ブラック
+		}
+	} else {
+		//(label_R == "V　ライトゴールド/Dブラウン×ゴールドラメ")
 		for(let i = 0; i < Alabel_logo.length; i++) {
-			for(let b = 0; b < Alabel_back.length; b++) {
-				for(let h = 0; h < Alabel_hon.length; h++) {
-					for(let hh = 0; hh < Alabel_honhuti.length; hh++) {
-						Alabel_logo[i].style.fill = "#332214"; //ダークブラウン
-						Alabel_back[b].style.fill = "#e6d5b8"; //ライトゴールド
-						Alabel_hon[h].style.fill = "#332214"; //ダークブラウン
-						Alabel_honhuti[hh].style.fill = "#deb06f"; //ゴールドラメ
-						}
-					}
-				}
-			}
-	} else{
-	}
+			Alabel_logo[i].style.fill = "#332214"; //ダークブラウン
+		}
+		for(let b = 0; b < Alabel_back.length; b++) {
+			Alabel_back[b].style.fill = "#e6d5b8"; //ライトゴールド
+		}
+		for(let h = 0; h < Alabel_hon.length; h++) {
+			Alabel_hon[h].style.fill = "#332214"; //ダークブラウン
+		}
+		for(let hh = 0; hh < Alabel_honhuti.length; hh++) {
+			Alabel_honhuti[hh].style.fill = "#deb06f"; //ゴールドラメ
+		}
+	} 
 
 	//「ラベル」の枠を表示させる
-	if ( type[0].match(/FM5型/) || type[0].match(/FM7型/)||type[0].match(/FM8型/)) {
-				//Rラベル　クリア
-				rlabel_Clear();
-				//Fラベル FM1　クリア
-				flabelIn1_Clear(); 
-		if (label_R.match(/H\d/)){
-			// js_label_img.style.display = "block";
+	//FM5.7.8型の場合
+	if ( (type[0].match(/FM5型/) || type[0].match(/FM7型/)||type[0].match(/FM8型/)) && (label_R.match(/H\d/)) ) {
+			//Rラベル　クリア
+			rlabel_Clear();
+			//Fラベル FM1　クリア
+			flabelIn1_Clear(); 
 			Hlabel_F.style.display ="block";
 			Klabel_F.style.display ="none";
 			Llabel_F.style.display ="none";
 			Mlabel_F.style.display ="none";
 			ABClabel_F.style.display ="none";
-		}else if  (label_R.match(/K\d*/) || label_R.match(/G\d*/) || label_R.match(/SA\d/)){
-			Hlabel_F.style.display ="none";
-			Klabel_F.style.display ="block";
-			Llabel_F.style.display ="none";
-			Mlabel_F.style.display ="none";
-			ABClabel_F.style.display ="none";
-		}else if  (label_R.match(/L\d*/) || label_R.match(/B\d/)){
-			Hlabel_F.style.display ="none";
-			Klabel_F.style.display ="none";
-			Llabel_F.style.display ="block";
-			Mlabel_F.style.display ="none";
-			ABClabel_F.style.display ="none";
-		}else if  (label_R.match(/M\d/)){
-			Hlabel_F.style.display ="none";
-			Klabel_F.style.display ="none";
-			Llabel_F.style.display ="none";
-			Mlabel_F.style.display ="block";
-			ABClabel_F.style.display ="none";
-		}else if  (label_R.match(/D/)|| label_R.match(/E/)|| label_R.match(/F/)|| label_R.match(/H/)|| label_R.match(/J/)|| label_R.match(/U/)|| label_R.match(/V/)){
-			Hlabel_F.style.display ="none";
-			Klabel_F.style.display ="none";
-			Llabel_F.style.display ="none";
-			Mlabel_F.style.display ="none";
-			ABClabel_F.style.display ="block";
-		}
-		else {
-		}
+	}else if  ( ( type[0].match(/FM5型/) || type[0].match(/FM7型/)||type[0].match(/FM8型/) ) && ( label_R.match(/K\d*/) || label_R.match(/G\d*/) || label_R.match(/SA\d/) ) ){
+		//Rラベル　クリア
+		rlabel_Clear();
+		//Fラベル FM1　クリア
+		flabelIn1_Clear(); 
+		Hlabel_F.style.display ="none";
+		Klabel_F.style.display ="block";
+		Llabel_F.style.display ="none";
+		Mlabel_F.style.display ="none";
+		ABClabel_F.style.display ="none";
+	}else if   ( (type[0].match(/FM5型/) || type[0].match(/FM7型/)||type[0].match(/FM8型/) ) &&  (label_R.match(/L\d*/) || label_R.match(/B\d/) ) ){
+		//Rラベル　クリア
+		rlabel_Clear();
+		//Fラベル FM1　クリア
+		flabelIn1_Clear(); 
+		Hlabel_F.style.display ="none";
+		Klabel_F.style.display ="none";
+		Llabel_F.style.display ="block";
+		Mlabel_F.style.display ="none";
+		ABClabel_F.style.display ="none";
+	}else if  ( (type[0].match(/FM5型/) || type[0].match(/FM7型/)||type[0].match(/FM8型/) ) &&  (label_R.match(/M\d/) ) ){
+		//Rラベル　クリア
+		rlabel_Clear();
+		//Fラベル FM1　クリア
+		flabelIn1_Clear(); 
+		Hlabel_F.style.display ="none";
+		Klabel_F.style.display ="none";
+		Llabel_F.style.display ="none";
+		Mlabel_F.style.display ="block";
+		ABClabel_F.style.display ="none";
+	}else if  ( (type[0].match(/FM5型/) || type[0].match(/FM7型/)||type[0].match(/FM8型/) ) &&  (label_R.match(/D/)|| label_R.match(/E/)|| label_R.match(/F/)|| label_R.match(/H/)|| label_R.match(/J/)|| label_R.match(/U/)|| label_R.match(/V/) ) ){
+		//Rラベル　クリア
+		rlabel_Clear();
+		//Fラベル FM1　クリア
+		flabelIn1_Clear(); 
+		Hlabel_F.style.display ="none";
+		Klabel_F.style.display ="none";
+		Llabel_F.style.display ="none";
+		Mlabel_F.style.display ="none";
+		ABClabel_F.style.display ="block";
+	
 
-	}else if( type[0].match(/FM1型/) ){
-	//Rラベルクリア
-	rlabel_Clear();
-	//Fラベル FM1以外　クリア
-	flabelQut1_Clear();
-		if (label_R.match(/H\d/)){
-			// js_label_img.style.display = "block";
-			Hlabel_FM1.style.display ="block";
-			Klabel_FM1.style.display ="none";
-			Llabel_FM1.style.display ="none";
-			Mlabel_FM1.style.display ="none";
-			ABClabel_FM1.style.display ="none";
-		}else if  (label_R.match(/K\d*/) || label_R.match(/G\d*/)|| label_R.match(/SA\d/)){
-			Hlabel_FM1.style.display ="none";
-			Klabel_FM1.style.display ="block";
-			Llabel_FM1.style.display ="none";
-			Mlabel_FM1.style.display ="none";
-			ABClabel_FM1.style.display ="none";
-		}else if  (label_R.match(/L\d*/) || label_R.match(/B\d/)){
-				Hlabel_FM1.style.display ="none";
-				Klabel_FM1.style.display ="none";
-				Llabel_FM1.style.display ="block";
-				Mlabel_FM1.style.display ="none";
-				ABClabel_FM1.style.display ="none";
-		}else if  (label_R.match(/M\d/)){
-				Hlabel_FM1.style.display ="none";
-				Klabel_FM1.style.display ="none";
-				Llabel_FM1.style.display ="none";
-				Mlabel_FM1.style.display ="block";
-				ABClabel_FM1.style.display ="none";
-		}else if  (label_R.match(/D/)|| label_R.match(/E/)|| label_R.match(/F/)|| label_R.match(/H/)|| label_R.match(/J/)|| label_R.match(/U/)|| label_R.match(/V/)){
-				Hlabel_FM1.style.display ="none";
-				Klabel_FM1.style.display ="none";
-				Llabel_FM1.style.display ="none";
-				Mlabel_FM1.style.display ="none";
-				ABClabel_FM1.style.display ="block";
-		}
-		else {
-		}
-	}else {
-	//Fラベル FM1以外　クリア
-	flabelQut1_Clear();
-	//Fラベル FM1　クリア
-	flabelIn1_Clear(); 
-	//「H+数字ラベル」と「H」のみのラベルがあり動かないため正規表現で区別。
-	if (label_R.match(/H\d/)){
-			// js_label_img.style.display = "block";
-			Hlabel_R.style.display ="block";
-			Klabel_R.style.display ="none";
-			Llabel_R.style.display ="none"
-			Mlabel_R.style.display ="none"
-			ABClabel_R.style.display ="none"
-		}else if  (label_R.match(/K\d*/) || label_R.match(/G\d*/) || label_R.match(/SA\d/)){
-			Hlabel_R.style.display ="none";
-			Klabel_R.style.display ="block";
-			Llabel_R.style.display ="none"
-			Mlabel_R.style.display ="none"
-			ABClabel_R.style.display ="none"
-		}else if  (label_R.match(/L\d*/) || label_R.match(/B\d/)){
-			Hlabel_R.style.display ="none";
-			Klabel_R.style.display ="none";
-			Llabel_R.style.display ="block"
-			Mlabel_R.style.display ="none"
-			ABClabel_R.style.display ="none"
-		}else if  (label_R.match(/M\d/)){
-			Hlabel_R.style.display ="none";
-			Klabel_R.style.display ="none";
-			Llabel_R.style.display ="none"
-			Mlabel_R.style.display ="block"
-			ABClabel_R.style.display ="none"
-		}else if  (label_R.match(/D/)|| label_R.match(/E/)|| label_R.match(/F/)|| label_R.match(/H/)|| label_R.match(/J/)|| label_R.match(/U/)|| label_R.match(/V/)){
-			Hlabel_R.style.display ="none";
-			Klabel_R.style.display ="none";
-			Llabel_R.style.display ="none"
-			Mlabel_R.style.display ="none"
-			ABClabel_R.style.display ="block"
-		}else {
-		}
 	}
-
+	//FM1型の場合
+	else if	((type[0].match(/FM1型/)) && (label_R.match(/H\d/)) ){
+		//Rラベルクリア
+		rlabel_Clear();
+		//Fラベル FM1以外　クリア
+		flabelQut1_Clear();
+		Hlabel_FM1.style.display ="block";
+		Klabel_FM1.style.display ="none";
+		Llabel_FM1.style.display ="none";
+		Mlabel_FM1.style.display ="none";
+		ABClabel_FM1.style.display ="none";
+	}else if  ((type[0].match(/FM1型/)) && (label_R.match(/K\d*/) || label_R.match(/G\d*/)|| label_R.match(/SA\d/)) ){
+		//Rラベルクリア
+		rlabel_Clear();
+		//Fラベル FM1以外　クリア
+		flabelQut1_Clear();
+		Hlabel_FM1.style.display ="none";
+		Klabel_FM1.style.display ="block";
+		Llabel_FM1.style.display ="none";
+		Mlabel_FM1.style.display ="none";
+		ABClabel_FM1.style.display ="none";
+	}else if  ((type[0].match(/FM1型/)) && (label_R.match(/L\d*/) || label_R.match(/B\d/)) ){
+		//Rラベルクリア
+		rlabel_Clear();
+		//Fラベル FM1以外　クリア
+		flabelQut1_Clear();
+		Hlabel_FM1.style.display ="none";
+		Klabel_FM1.style.display ="none";
+		Llabel_FM1.style.display ="block";
+		Mlabel_FM1.style.display ="none";
+		ABClabel_FM1.style.display ="none";
+	}else if  ((type[0].match(/FM1型/)) && (label_R.match(/M\d/)) ){
+		//Rラベルクリア
+		rlabel_Clear();
+		//Fラベル FM1以外　クリア
+		flabelQut1_Clear();
+		Hlabel_FM1.style.display ="none";
+		Klabel_FM1.style.display ="none";
+		Llabel_FM1.style.display ="none";
+		Mlabel_FM1.style.display ="block";
+		ABClabel_FM1.style.display ="none";
+	}else if  ((type[0].match(/FM1型/)) && (label_R.match(/D/)|| label_R.match(/E/)|| label_R.match(/F/)|| label_R.match(/H/)|| label_R.match(/J/)|| label_R.match(/U/)|| label_R.match(/V/)) ){
+		//Rラベルクリア
+		rlabel_Clear();
+		//Fラベル FM1以外　クリア
+		flabelQut1_Clear();
+		Hlabel_FM1.style.display ="none";
+		Klabel_FM1.style.display ="none";
+		Llabel_FM1.style.display ="none";
+		Mlabel_FM1.style.display ="none";
+		ABClabel_FM1.style.display ="block";
+	}
+	//レギュラーの場合
+	else if (label_R.match(/H\d/)){
+		//「H+数字ラベル」と「H」のみのラベルがあり動かないため正規表現で区別。
+		//Fラベル FM1以外　クリア
+		flabelQut1_Clear();
+		//Fラベル FM1　クリア
+		flabelIn1_Clear(); 
+		// js_label_img.style.display = "block";
+		Hlabel_R.style.display ="block";
+		Klabel_R.style.display ="none";
+		Llabel_R.style.display ="none";
+		Mlabel_R.style.display ="none";
+		ABClabel_R.style.display ="none";
+	}else if  (label_R.match(/K\d*/) || label_R.match(/G\d*/) || label_R.match(/SA\d/)){
+		//Fラベル FM1以外　クリア
+		flabelQut1_Clear();
+		//Fラベル FM1　クリア
+		flabelIn1_Clear(); 
+		Hlabel_R.style.display ="none";
+		Klabel_R.style.display ="block";
+		Llabel_R.style.display ="none";
+		Mlabel_R.style.display ="none";
+		ABClabel_R.style.display ="none";
+	}else if  (label_R.match(/L\d*/) || label_R.match(/B\d/)){
+		//Fラベル FM1以外　クリア
+		flabelQut1_Clear();
+		//Fラベル FM1　クリア
+		flabelIn1_Clear(); 
+		Hlabel_R.style.display ="none";
+		Klabel_R.style.display ="none";
+		Llabel_R.style.display ="block";
+		Mlabel_R.style.display ="none";
+		ABClabel_R.style.display ="none";
+	}else if  (label_R.match(/M\d/)){
+		//Fラベル FM1以外　クリア
+		flabelQut1_Clear();
+		//Fラベル FM1　クリア
+		flabelIn1_Clear(); 
+		Hlabel_R.style.display ="none";
+		Klabel_R.style.display ="none";
+		Llabel_R.style.display ="none";
+		Mlabel_R.style.display ="block";
+		ABClabel_R.style.display ="none";
+	}else if  (label_R.match(/D/)|| label_R.match(/E/)|| label_R.match(/F/)|| label_R.match(/H/)|| label_R.match(/J/)|| label_R.match(/U/)|| label_R.match(/V/)){
+			//Fラベル FM1以外　クリア
+			flabelQut1_Clear();
+			//Fラベル FM1　クリア
+			flabelIn1_Clear(); 
+			Hlabel_R.style.display ="none";
+			Klabel_R.style.display ="none";
+			Llabel_R.style.display ="none";
+			Mlabel_R.style.display ="none";
+			ABClabel_R.style.display ="block";
+	}else {
+		console.log("エラー");
+	}
+	
+	
 
 	//「ラベル」によって番号刺繍項目を表示させる	
 	if(label_R.match(/K\d*/) || label_R.match(/G\d*/) || label_R.match(/SA\d/)){
@@ -2448,11 +2498,9 @@ labelChange.onchange = () =>{
 		num_EmbContents.style.display = "none";
 	}
 			
-
-	// });
-}
+});
 // 8【画像】【カラー】選択した「指カバー」の表示とカラー設定 // // // // // //  
-selectCover.onchange = () =>{
+selectCover.addEventListener("change", () => {
 	if(selectCover.value != '無し'){
 		selectCover2.disabled = true;
 		selectCover3.disabled = true;
@@ -2485,8 +2533,8 @@ selectCover.onchange = () =>{
 		fingerImg[1].style.display = "none";
 		fingerImg[2].style.display = "none";
 	}
-}
-selectCover2.onchange = () =>{
+});
+selectCover2.addEventListener("change", () => {
 	if(selectCover2.value != '無し'){
 		selectCover.disabled = true;
 		selectCover3.disabled = true;
@@ -2519,8 +2567,8 @@ selectCover2.onchange = () =>{
 		fingerImg[1].style.display = "none";
 		fingerImg[2].style.display = "none";
 	}
-}
-selectCover3.onchange = () =>{
+});
+selectCover3.addEventListener("change", () => {
 	if(selectCover3.value != '無し'){
 		selectCover.disabled = true;
 		selectCover2.disabled = true;
@@ -2553,7 +2601,7 @@ selectCover3.onchange = () =>{
 		fingerImg[1].style.display = "none";
 		fingerImg[2].style.display = "none";
 	}
-}
+});
 // 9【画像】選んだ芯トジの画像を表示// // // // // // // // //
 const CoreChange = () => {
 	if(stList[0].checked){
@@ -2569,8 +2617,7 @@ const CoreChange = () => {
 		coreImg[1].style.display ="none";
 		coreImg[2].style.display ="block";
 	}
-}	
-
+}
 //10　刺繍の動き// // // // // // // // // // // // // // // 
 //10-1 通常刺繍
 class Embro{
@@ -2580,7 +2627,7 @@ class Embro{
 		const eHuti = document.querySelector(obj.embroHuti);
 		const eText = document.querySelector(obj.embroText);	
 
-		ePlace.onchange = () =>{
+		ePlace.addEventListener("change",() =>{
 			eColor.selectedIndex = 0;
 			eHuti.selectedIndex = 0;
 			eText.value = '';
@@ -2616,7 +2663,7 @@ class Embro{
 				eHuti.disabled = true;
 				eText.disabled = false;
 			}
-		}
+		});
 	}
 }
 //親指部
@@ -2649,7 +2696,7 @@ const Embro4 = new Embro({
 });
 
 //10-2丸抜き刺繍
-maruEmbro_part.onchange = () => {
+maruEmbro_part.addEventListener("change", () => {
 		maruEmbro.selectedIndex = 0;
 		maruEmbro_base.selectedIndex = 0;
 		maruEmbro_color.selectedIndex = 0;
@@ -2714,10 +2761,9 @@ maruEmbro_part.onchange = () => {
 			initMaruEmbro_move();
 
 		}
-};
-
+});
 //10-3WEB刺繍
-webEmbro.onchange = () => {
+webEmbro.addEventListener("change", () => {
 
 		webEmbro_color.selectedIndex = 0;
 		webEmbro_huti.selectedIndex = 0;
@@ -2753,10 +2799,9 @@ webEmbro.onchange = () => {
 			webEmbro_huti.disabled = true;
 			webEmbro_text.disabled = false;
 		}
-};
-
+});
 //10-4番号刺繍
-numEmbro.onchange = () => {
+numEmbro.addEventListener("change", () => {
 	// numEmbro_text.value = '無し';
 		initNumEmbro_move();
 		numEmbro_color.selectedIndex = 0;
@@ -2769,11 +2814,11 @@ numEmbro.onchange = () => {
 		numEmbro_color.disabled = false;
 		numEmbro_text.disabled = false;
 	}
-};
+});
 
 // 「戻る」時に、値をフォームに読込///////////////////////////////
 $(function () {
-	var f = 'form[action*="〇〇〇.cgi"]'; //対象のフォームを特定
+	var f = 'form[action*="order-s.cgi"]'; //対象のフォームを特定
 	var kubota = "simigloveorder"; //sessionStorage内の名前
 
 		window.addEventListener("pageshow", function () {
@@ -2822,4 +2867,6 @@ $(function () {
 			});
 
 });
+
+
 
